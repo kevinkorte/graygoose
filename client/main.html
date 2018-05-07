@@ -1,0 +1,36 @@
+<head>
+  <title>graygoose</title>
+</head>
+
+<body>
+
+  {{> hello}} {{> info}}
+</body>
+
+<template name="hello">
+  <div class="left-sidebar">
+    <div class="left-sidebar-header">Admin</div>
+    <ul class="left-sidebar-list">
+      <li>Accounts</li>
+      <li>Billing</li>
+    </ul>
+  </div>
+</template>
+
+<template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li>
+      <a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a>
+    </li>
+    <li>
+      <a href="http://guide.meteor.com" target="_blank">Follow the Guide</a>
+    </li>
+    <li>
+      <a href="https://docs.meteor.com" target="_blank">Read the Docs</a>
+    </li>
+    <li>
+      <a href="https://forums.meteor.com" target="_blank">Discussions</a>
+    </li>
+  </ul>
+</template>
