@@ -1,4 +1,4 @@
-import '../../ui/pages/main.html';
+import "../../ui/pages/main.js";
 
 FlowRouter.route('/signup', {
   name: "signup",
