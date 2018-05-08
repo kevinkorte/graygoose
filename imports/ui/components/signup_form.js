@@ -1,5 +1,9 @@
-import { Meteor } from "meteor/meteor";
-import { Template } from "meteor/templating";
+import {
+  Meteor
+} from "meteor/meteor";
+import {
+  Template
+} from "meteor/templating";
 
 import "./signup_form.html";
 
@@ -18,12 +22,16 @@ Template.signup_form.onRendered(() => {
   };
 
   // Create an instance of the card Element.
-  const card = elements.create('card', {style});
+  const card = elements.create('card', {
+    style
+  });
 
   // Add an instance of the card Element into the `card-element` <div>.
   card.mount('#card-element');
 
-  card.addEventListener('change', ({error}) => {
+  card.addEventListener('change', ({
+    error
+  }) => {
     const displayError = document.getElementById('card-errors');
     if (error) {
       displayError.textContent = error.message;
@@ -33,42 +41,50 @@ Template.signup_form.onRendered(() => {
   });
 
   const form = document.getElementById('signup');
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-  const {token, error} = await stripe.createToken(card);
+    const {
+      token,
+      error
+    } = await stripe.createToken(card);
 
-  if (error) {
-    // Inform the customer that there was an error.
-    const errorElement = document.getElementById('card-errors');
-    errorElement.textContent = error.message;
-  } else {
-    // Send the token to your server.
-    stripeTokenHandler(token);
+    if (error) {
+      // Inform the customer that there was an error.
+      const errorElement = document.getElementById('card-errors');
+      errorElement.textContent = error.message;
+    } else {
+      // Send the token to your server.
+      stripeTokenHandler(token);
+    }
+  });
+
+  const stripeTokenHandler = (token) => {
+    // Insert the token ID into the form so it gets submitted to the server
+    const form = document.getElementById('signup');
+    const hiddenInput = document.createElement('input');
+    hiddenInput.setAttribute('type', 'hidden');
+    hiddenInput.setAttribute('name', 'stripeToken');
+    hiddenInput.setAttribute('id', 'stripeToken');
+    hiddenInput.setAttribute('value', token.id);
+    form.appendChild(hiddenInput);
+
+    // Submit the form
+    const email = $('#exampleInputEmail1').val();
+    token = $("#stripeToken").val();
+    Meteor.call('createNewOwnerAccount', email, token, (error, result) => {
+      if (error) {
+        console.log(error)
+        console.error("error", error);
+      } else {
+        console.log("result", result);
+      }
+    });
   }
-});
-
-const stripeTokenHandler = (token) => {
-  // Insert the token ID into the form so it gets submitted to the server
-  const form = document.getElementById('signup');
-  const hiddenInput = document.createElement('input');
-  hiddenInput.setAttribute('type', 'hidden');
-  hiddenInput.setAttribute('name', 'stripeToken');
-  hiddenInput.setAttribute('id', 'stripeToken');
-  hiddenInput.setAttribute('value', token.id);
-  form.appendChild(hiddenInput);
-
-  // Submit the form
-  const email = $('#exampleInputEmail1').val();
-  token = $("#stripeToken").val();
-  Meteor.call('createNewOwnerAccount', email, token);
-}
 
 
 })
 
 Template.signup_form.events({
-  
+
 });
-
-
