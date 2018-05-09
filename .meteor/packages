@@ -25,5 +25,7 @@ kadira:flow-router
 practicalmeteor:mocha
 fourseven:scss
 seba:minifiers-autoprefixer
+meteortoys:allthings
 
 accounts-base
+accounts-password

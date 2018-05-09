@@ -71,15 +71,22 @@ Template.signup_form.onRendered(() => {
 
     // Submit the form
     const email = $('#exampleInputEmail1').val();
+    const password = $("#exampleInputPassword1").val();
     token = $("#stripeToken").val();
-    Meteor.call('createNewOwnerAccount', email, token, (error, result) => {
+    Meteor.call('doesCustomerExistsByEmail', email, password, (error) => {
       if (error) {
-        console.log(error)
-        console.error("error", error);
+        console.error(error);
       } else {
-        console.log("result", result);
+        Meteor.call('createNewOwnerAccount', userId, email, token, (error, customer) => {
+          if (error) {
+            console.error("error", error);
+          } else {
+
+          }
+        });
       }
     });
+
   }
 
 
