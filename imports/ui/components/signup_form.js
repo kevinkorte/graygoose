@@ -6,12 +6,22 @@ import {
 } from "meteor/templating";
 
 import "./signup_form.html";
+import Customers from "../../api/Customers/Customers";
 
 const stripe = Stripe(Meteor.settings.public.stripe_test_pk);
 const elements = stripe.elements();
 
+Template.signup_form.onCreated(() => {
+  Tracker.autorun(() => {
+    Meteor.subscribe('customers');
+    Meteor.subscribe('users');
+  })
+
+})
+
 
 Template.signup_form.onRendered(() => {
+
   // Custom styling can be passed to options when creating an Element.
   const style = {
     base: {
@@ -81,11 +91,24 @@ Template.signup_form.onRendered(() => {
           if (error) {
             console.error("error", error);
           } else {
-            Meteor.call('subscribeCustomerToPlan', customer.id, (error) => {
+            Meteor.call('saveStripeCustomer', customer, (error, result) => {
               if (error) {
-                console.error(error);
+                console.log(error);
+              } else {
+                Meteor.call('updateLocalUserAccountWithStripeId', userId, customer, (error) => {
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    Meteor.call
+                  }
+                })
               }
             })
+            // Meteor.call('subscribeCustomerToPlan', customer.id, (error) => {
+            //   if (error) {
+            //     console.error(error);
+            //   }
+            // })
           }
         });
       }
@@ -99,3 +122,12 @@ Template.signup_form.onRendered(() => {
 Template.signup_form.events({
 
 });
+
+Template.signup_form.helpers({
+  customers() {
+    return Customers.find({});
+  },
+  users() {
+    return Meteor.users.find({});
+  }
+})

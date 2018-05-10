@@ -12,15 +12,32 @@ Meteor.methods({
         email: email,
         source: token
       })
-      .then(customer => {
-        Customers.insert({
-          customer
-        });
-      })
       .catch((e) => {
         console.error(e);
         throw new Meteor.Error('stripe-customer-error', "Well that's unexpected. There was an error setting up your account.");
       });
     return customer;
   },
+  saveStripeCustomer(customer) {
+    try {
+      Customers.insert({
+        customer
+      });
+    } catch (e) {
+      throw new Meteor.Error('save-stripe-customer-error', "Well that's unexpected. There was an error setting up your account.");
+    }
+  },
+  updateLocalUserAccountWithStripeId(userId, customer) {
+    try {
+      Meteor.users.update({
+        _id: userId
+      }, {
+        $set: {
+          stripeCustomerId: customer.id
+        }
+      });
+    } catch (e) {
+      throw new Meteor.Error('update-user-account-w-stripe-id', "Well that's unexpected. There was an error setting up your account.");
+    }
+  }
 });
