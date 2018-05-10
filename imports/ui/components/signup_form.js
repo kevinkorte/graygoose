@@ -73,15 +73,19 @@ Template.signup_form.onRendered(() => {
     const email = $('#exampleInputEmail1').val();
     const password = $("#exampleInputPassword1").val();
     token = $("#stripeToken").val();
-    Meteor.call('doesCustomerExistsByEmail', email, password, (error) => {
+    Meteor.call('checkAndCreateAccount', email, password, (error, userId) => {
       if (error) {
         console.error(error);
       } else {
-        Meteor.call('createNewOwnerAccount', userId, email, token, (error, customer) => {
+        Meteor.call('createNewStripeAccount', email, token, (error, customer) => {
           if (error) {
             console.error("error", error);
           } else {
-
+            Meteor.call('subscribeCustomerToPlan', customer.id, (error) => {
+              if (error) {
+                console.error(error);
+              }
+            })
           }
         });
       }
