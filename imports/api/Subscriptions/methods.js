@@ -16,8 +16,17 @@ Meteor.methods({
         trial_from_plan: true
       })
       .catch((e) => {
-        console.log('subscribe error', e);
         throw new Meteor.Error('accounts-error', "Well that's unexpected. There was an error setting up your account.");
       });
+    return subscription;
+  },
+  async saveSubscription(subscription) {
+    try {
+      Subscriptions.insert({
+        subscription
+      });
+    } catch (e) {
+      throw new Meteor.Error('save-stripe-customer-error', "Well that's unexpected. There was an error setting up your account.");
+    }
   }
 });

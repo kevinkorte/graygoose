@@ -7,6 +7,7 @@ import {
 
 import "./signup_form.html";
 import Customers from "../../api/Customers/Customers";
+import Subscriptions from "../../api/Subscriptions/Subscriptions";
 
 const stripe = Stripe(Meteor.settings.public.stripe_test_pk);
 const elements = stripe.elements();
@@ -15,6 +16,7 @@ Template.signup_form.onCreated(() => {
   Tracker.autorun(() => {
     Meteor.subscribe('customers');
     Meteor.subscribe('users');
+    Meteor.subscribe('subs');
   })
 
 })
@@ -99,7 +101,18 @@ Template.signup_form.onRendered(() => {
                   if (error) {
                     console.log(error);
                   } else {
-                    Meteor.call
+                    Meteor.call('subscribeCustomerToPlan', customer.id, (error, result) => {
+                      if (error) {
+                        console.log(error)
+                      } else {
+                        console.log(result);
+                        Meteor.call('saveSubscription', result, (error) => {
+                          if (error) {
+                            console.log(error);
+                          }
+                        })
+                      }
+                    })
                   }
                 })
               }
@@ -129,5 +142,8 @@ Template.signup_form.helpers({
   },
   users() {
     return Meteor.users.find({});
+  },
+  subs() {
+    return Subscriptions.find();
   }
 })
