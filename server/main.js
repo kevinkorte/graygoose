@@ -3,7 +3,8 @@ import {
 } from 'meteor/meteor';
 import {
   Accounts
-} from 'meteor/accounts-base'
+} from 'meteor/accounts-base';
+import '../imports/startup/server';
 
 Meteor.startup(() => {
   // code to run on server at startup

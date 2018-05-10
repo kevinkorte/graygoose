@@ -77,7 +77,7 @@ Template.signup_form.onRendered(() => {
       if (error) {
         console.error(error);
       } else {
-        Meteor.call('createNewStripeAccount', email, token, (error, customer) => {
+        Meteor.call('createStripeCustomer', email, token, (error, customer) => {
           if (error) {
             console.error("error", error);
           } else {
