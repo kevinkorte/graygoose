@@ -20,13 +20,26 @@ Meteor.methods({
       });
     return subscription;
   },
-  async saveSubscription(subscription) {
+  saveSubscription(subscription) {
     try {
       Subscriptions.insert({
         subscription
       });
     } catch (e) {
       throw new Meteor.Error('save-stripe-customer-error', "Well that's unexpected. There was an error setting up your account.");
+    }
+  },
+  updateLocalUserAccountWithStripeSub(userId, subscription) {
+    try {
+      Meteor.users.update({
+        _id: userId
+      }, {
+        $set: {
+          stripeSubscriptionId: subscription.id
+        }
+      });
+    } catch (e) {
+      throw new Meteor.Error('update-user-account-w-stripe-sub', "Well that's unexpected. There was an error setting up your account.");
     }
   }
 });
