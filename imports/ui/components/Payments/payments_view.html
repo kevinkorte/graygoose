@@ -21,7 +21,7 @@
         </td>
         <td>{{formatDate payment.created}}</td>
         {{#each payment.data.object.lines.data}}
-        <td>{{this.description}}</td>
+        <td class="text-muted font-italic">{{this.description}}</td>
         <td>{{this.quantity}}</td>
         {{/each}}
         <td>{{formatPrice payment.data.object.total}}</td>

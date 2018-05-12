@@ -17,6 +17,15 @@ Picker.route('/stripe', (params, request, response, next) => {
           }
         });
         break;
+      case 'customer.source.created':
+        Meteor.call('saveNewCardSource', request.body, (error, result) => {
+          if (error) {
+            console.error(error);
+          } else {
+            resolve("200 OK");
+          }
+        });
+        break;
     }
   })
   webhook.then((result) => {

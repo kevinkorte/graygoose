@@ -1,0 +1,1 @@
+import './payments_status.html';

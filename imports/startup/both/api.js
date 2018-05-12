@@ -1,3 +1,5 @@
+import '../../api/Cards/methods';
+
 import '../../api/Customers/methods';
 
 import '../../api/Subscriptions/methods';
