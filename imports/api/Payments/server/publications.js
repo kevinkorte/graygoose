@@ -6,6 +6,7 @@ import {
 } from 'meteor/check';
 import Payments from '../Payments';
 
-Meteor.publish('users.payments', () => {
+Meteor.publish('user.payments', () => {
+  console.log('check');
   return Payments.find({});
 })

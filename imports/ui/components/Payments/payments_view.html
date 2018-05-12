@@ -1,1 +1,32 @@
-<template name="payments_view">Payments view</template>
+<template name="payments_view">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Seats</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each payments}}
+      <tr>
+        <td>
+          {{#if payment.data.object.paid}}
+          <h5>
+            <span class="badge badge-success">Paid</span>
+          </h5>
+          {{/if}}
+        </td>
+        <td>{{formatDate payment.created}}</td>
+        {{#each payment.data.object.lines.data}}
+        <td>{{this.description}}</td>
+        <td>{{this.quantity}}</td>
+        {{/each}}
+        <td>{{formatPrice payment.data.object.total}}</td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</template>
