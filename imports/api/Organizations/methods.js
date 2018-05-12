@@ -6,7 +6,7 @@ import Organizations from './Organizations';
 Meteor.methods({
   createNewOrganization() {
     try {
-      Organizations.insert({});
+      return Organizations.insert({});
     } catch (e) {
       throw new Meteor.Error('create-organization-error', "Error");
     }
@@ -14,6 +14,11 @@ Meteor.methods({
   setOwnerOnOrganization(userId, organizationId) {
     try {
       Roles.addUsersToRoles(userId, ['owner', 'admin'], organizationId);
+      Meteor.users.update(userId, {
+        $set: {
+          organizationId: organizationId
+        }
+      });
     } catch (e) {
       throw new Meteor.Error('set-owner-role-error', "Error");
     }
