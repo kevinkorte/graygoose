@@ -5,6 +5,7 @@ import {
   check
 } from 'meteor/check';
 import Customers from '../Customers';
+import Organizations from '../../Organizations/Organizations';
 
 
 Meteor.publish('customers', () => {

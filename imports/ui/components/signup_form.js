@@ -100,44 +100,56 @@ Template.signup_form.onRendered(() => {
             console.log(error);
           } else {
             let userId = Meteor.userId();
-            Meteor.call('createStripeCustomer', email, token, (error, customer) => {
+            Meteor.call('createNewOrganization', (error, organizationId) => {
               if (error) {
-                console.error("error", error);
+                console.log(error);
               } else {
-                Meteor.call('saveStripeCustomer', customer, (error, result) => {
+                Meteor.call('setOwnerOnOrganization', userId, organizationId, (error) => {
                   if (error) {
                     console.log(error);
                   } else {
-                    Meteor.call('updateLocalUserAccountWithStripeId', userId, customer, (error) => {
+                    Meteor.call('createStripeCustomer', email, token, (error, customer) => {
                       if (error) {
-                        console.log(error);
+                        console.error("error", error);
                       } else {
-                        Meteor.call('subscribeCustomerToPlan', customer.id, (error, subscription) => {
+                        Meteor.call('saveStripeCustomer', customer, (error, result) => {
                           if (error) {
-                            console.log(error)
+                            console.log(error);
                           } else {
-                            console.log(result);
-                            Meteor.call('saveSubscription', subscription, (error) => {
+                            Meteor.call('updateLocalUserAccountWithStripeId', userId, customer, (error) => {
                               if (error) {
                                 console.log(error);
                               } else {
-                                Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error => {
+                                Meteor.call('subscribeCustomerToPlan', customer.id, (error, subscription) => {
                                   if (error) {
-                                    console.log(error);
+                                    console.log(error)
                                   } else {
-                                    FlowRouter.go("dashboard");
+                                    console.log(result);
+                                    Meteor.call('saveSubscription', subscription, (error) => {
+                                      if (error) {
+                                        console.log(error);
+                                      } else {
+                                        Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error => {
+                                          if (error) {
+                                            console.log(error);
+                                          } else {
+                                            FlowRouter.go("dashboard");
+                                          }
+                                        }))
+                                      }
+                                    })
                                   }
-                                }))
+                                })
                               }
                             })
                           }
                         })
                       }
-                    })
+                    });
                   }
                 })
               }
-            });
+            })
           }
         });
       }
