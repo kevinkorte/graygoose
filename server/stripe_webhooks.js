@@ -13,7 +13,7 @@ Picker.route('/stripe', (params, request, response, next) => {
           if (error) {
             console.error(error);
           } else {
-            resolve("200 OK");
+            resolve("200 OK invoice.payment_succeeded");
           }
         });
         break;
@@ -22,7 +22,7 @@ Picker.route('/stripe', (params, request, response, next) => {
           if (error) {
             console.error(error);
           } else {
-            resolve("200 OK");
+            resolve("200 OK customer.source.created");
           }
         });
         break;

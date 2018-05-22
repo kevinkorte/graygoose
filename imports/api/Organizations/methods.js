@@ -6,7 +6,9 @@ import Organizations from './Organizations';
 Meteor.methods({
   createNewOrganization() {
     try {
-      return Organizations.insert({});
+      let id = Organizations.insert({});
+      Organizations.update(id, { $set: { ownerId: Meteor.userId() }}, { $push: { users: Meteor.userId() } } );
+      return id;
     } catch (e) {
       throw new Meteor.Error('create-organization-error', "Error");
     }

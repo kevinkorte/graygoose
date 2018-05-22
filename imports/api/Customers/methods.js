@@ -19,6 +19,7 @@ Meteor.methods({
     return customer;
   },
   saveStripeCustomer(customer) {
+    console.log('save stripe customer', customer)
     try {
       Customers.insert({
         customer
