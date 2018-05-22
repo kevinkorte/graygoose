@@ -8,6 +8,7 @@ const stripe = stripePackage(Meteor.settings.private.stripe_test_sk);
 
 Meteor.methods({
   savePaymentSucceededEvent(payment) {
+    console.log(payment);
     try {
       Payments.insert({
         payment
