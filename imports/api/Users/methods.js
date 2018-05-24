@@ -1,7 +1,6 @@
 import {
   Meteor
 } from 'meteor/meteor';
-console.log("HELLO");
 Meteor.methods({
   checkAndCreateAccount(email, password) {
     let user = Accounts.findUserByEmail(email);

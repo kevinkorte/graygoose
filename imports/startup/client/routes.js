@@ -2,6 +2,7 @@ import '../../ui/layouts/App_home.html';
 import "../../ui/pages/main.js";
 import '../../ui/pages/adminNav.js';
 import '../../ui/pages/billing.js';
+import '../../ui/pages/Dashboard/dashboard';
 
 
 FlowRouter.route('/signup', {
@@ -20,7 +21,7 @@ FlowRouter.route('/dashboard', {
     $('body').removeClass('light-background');
   },
   action: function () {
-    BlazeLayout.render("App.home");
+    BlazeLayout.render("App.home", { template: 'dashboard' });
   }
 });
 
