@@ -7,9 +7,11 @@ Meteor.methods({
   createNewOrganization() {
     try {
       let id = Organizations.insert({});
-      Organizations.update(id, { $set: { ownerId: Meteor.userId() }}, { $push: { users: Meteor.userId() } } );
+      Organizations.update(id, { $set: { ownerId: Meteor.userId() }, $push: { 'users': Meteor.userId() }} );
+      console.log(id);
       return id;
     } catch (e) {
+      console.log(e);
       throw new Meteor.Error('create-organization-error', "Error");
     }
   },

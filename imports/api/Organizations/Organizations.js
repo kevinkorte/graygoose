@@ -11,9 +11,10 @@ const Schemas = {};
 Schemas.Organizations = new SimpleSchema({
   users: {
     type: Array,
+    optional: true
   },
   'users.$': {
-    type: Object
+    type: String
   }
 });
 
