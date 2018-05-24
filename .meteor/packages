@@ -25,12 +25,12 @@ kadira:flow-router
 practicalmeteor:mocha
 fourseven:scss
 seba:minifiers-autoprefixer
-meteortoys:allthings
 
 accounts-base
 accounts-password
-msavin:mongol
 session
 meteorhacks:picker
 alanning:roles
-#aldeed:collection2@3.0.0
+msavin:jetsetter
+msavin:mongol
+aldeed:collection2@3.0.0

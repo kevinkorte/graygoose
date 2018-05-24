@@ -6,17 +6,17 @@ import SimpleSchema from 'simpl-schema';
 
 const Organizations = new Mongo.Collection("organizations");
 
-// const Schemas = {};
+const Schemas = {};
 
-// Schemas.Organizations = new SimpleSchema({
-//   users: {
-//     type: Array,
-//   },
-//   'users.$': {
-//     type: Object
-//   }
-// });
+Schemas.Organizations = new SimpleSchema({
+  users: {
+    type: Array,
+  },
+  'users.$': {
+    type: Object
+  }
+});
 
-// Organizations.attachSchema(Schemas.Organizations);
+Organizations.attachSchema(Schemas.Organizations);
 
 export default Organizations;
