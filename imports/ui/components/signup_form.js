@@ -129,13 +129,19 @@ Template.signup_form.onRendered(() => {
                                       if (error) {
                                         console.log(error);
                                       } else {
-                                        Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error => {
+                                        Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error) => {
                                           if (error) {
                                             console.log(error);
                                           } else {
-                                            FlowRouter.go("dashboard");
+                                            Meteor.call('updateOrganizationWithStrip', organizationId, customer, subscription, (error) => {
+                                              if (error) {
+                                                console.log(error);
+                                              } else {
+                                                FlowRouter.go("dashboard");
+                                              }
+                                            } )
                                           }
-                                        }))
+                                        })
                                       }
                                     })
                                   }

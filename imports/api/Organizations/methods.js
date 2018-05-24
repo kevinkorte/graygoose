@@ -8,7 +8,6 @@ Meteor.methods({
     try {
       let id = Organizations.insert({});
       Organizations.update(id, { $set: { ownerId: Meteor.userId() }, $push: { 'users': Meteor.userId() }} );
-      console.log(id);
       return id;
     } catch (e) {
       console.log(e);
@@ -23,8 +22,20 @@ Meteor.methods({
           organizationId: organizationId
         }
       });
+      Organizations.update(organizationId, { $set: { owner: userId } } );
     } catch (e) {
       throw new Meteor.Error('set-owner-role-error', "Error");
+    }
+  },
+  updateOrganizationWithStrip(organizationId, customer, subscription) {
+    try {
+      Organizations.update(organizationId, { $set: {
+        stripeCustomerId: customer.id,
+        stripeSubscriptionId: subscription.id
+      } } );
+    } catch (e) {
+      console.log(e);
+      throw new Meteor.Error('update-organization-error', "Error")
     }
   }
 })

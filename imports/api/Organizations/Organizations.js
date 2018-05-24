@@ -15,6 +15,18 @@ Schemas.Organizations = new SimpleSchema({
   },
   'users.$': {
     type: String
+  },
+  owner: {
+    type: String,
+    optional: true
+  },
+  stripeCustomerId: {
+    type: String,
+    optional: true
+  },
+  stripeSubscriptionId: {
+    type: String,
+    optional: true
   }
 });
 
