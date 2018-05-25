@@ -3,5 +3,8 @@ import { check } from 'meteor/check';
 import Organizations from '../Organizations';
 
 Meteor.publish('org', () => {
-  return Organizations.find({});
+  let user = Meteor.user();
+  if (user) {
+    return Organizations.find({_id: user.organizationId});
+  }
 })
