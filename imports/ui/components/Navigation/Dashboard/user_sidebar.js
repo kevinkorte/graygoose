@@ -19,5 +19,36 @@ Template.user_sidebar.helpers({
     } else {
       return null;
     }
+  },
+  getUserName() {
+    let userId = Meteor.userId();
+    let user = Meteor.users.findOne(userId);
+    if ( user ) {
+      if ( user.profile.name.first) {
+        return user.profile.name.first + ' ' + user.profile.name.last;
+      }
+    }
+  },
+  getPrimaryUserEmail() {
+    let userId = Meteor.userId();
+    let user = Meteor.users.findOne(userId);
+    if ( user ) {
+      if ( user.emails[0].address ) {
+        return user.emails[0].address;
+      }
+    }
+  },
+  getUserRoleBadge() {
+    let userId = Meteor.userId();
+    let user = Meteor.users.findOne(userId);
+    if ( user ) {
+      if (Roles.userIsInRole(userId, 'owner', user.organizationId)) {
+        return 'owner'
+      } else if (Roles.userIsInRole(userId, 'admin', user.organizationId)) {
+        return 'admin'
+      } else {
+        return 'team member'
+      }
+    }
   }
 })

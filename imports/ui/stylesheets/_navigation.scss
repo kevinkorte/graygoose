@@ -1,0 +1,21 @@
+
+.user-profile {
+  display: inline-block;
+  margin: 0 auto;
+  font-size: 3rem;
+  padding: 1rem 1.35rem;
+  border-radius: 10px;
+  color: #ed6ea0;
+  // z-index: 1000;
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  margin-bottom: 1rem;
+}
+.profile-info {
+  text-align: center;
+}
+.user-name {
+  color: hsla(208, 22%, 21%, 1);
+}
+.user-email {
+  color: hsla(209, 21%, 44%, 1);
+}
