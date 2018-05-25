@@ -16,6 +16,8 @@ Template.user_sidebar.helpers({
         let l = last.charAt(0);
         return f + l;
       }
+    } else {
+      return null;
     }
   }
 })

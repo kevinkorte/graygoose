@@ -87,6 +87,8 @@ Template.signup_form.onRendered(() => {
     // Submit the form
     const email = $('#exampleInputEmail1').val();
     const password = $("#exampleInputPassword1").val();
+    const firstname = $('#first-name').val();
+    const lastname = $('#last-name').val();
     token = $("#stripeToken").val();
     Meteor.call('checkAndCreateAccount', email, password, (error, userId) => {
       if (error) {
@@ -94,52 +96,60 @@ Template.signup_form.onRendered(() => {
       } else {
         Accounts.createUser({
           email: email,
-          password: password
+          password: password,
+          profile: {
+            name: {
+              first: firstname,
+              last: lastname
+            }
+          }
         }, (error) => {
           if (error) {
             console.log(error);
           } else {
             let userId = Meteor.userId();
-            Meteor.call('createNewOrganization', (error, organizationId) => {
-              if (error) {
-                console.log(error);
-              } else {
-                Meteor.call('setOwnerOnOrganization', userId, organizationId, (error) => {
+                Meteor.call('createNewOrganization', (error, organizationId) => {
                   if (error) {
                     console.log(error);
                   } else {
-                    Meteor.call('createStripeCustomer', email, token, (error, customer) => {
+                    Meteor.call('setOwnerOnOrganization', userId, organizationId, (error) => {
                       if (error) {
-                        console.error("error", error);
+                        console.log(error);
                       } else {
-                        Meteor.call('saveStripeCustomer', customer, (error, result) => {
+                        Meteor.call('createStripeCustomer', email, token, (error, customer) => {
                           if (error) {
-                            console.log(error);
+                            console.error("error", error);
                           } else {
-                            Meteor.call('updateLocalUserAccountWithStripeId', userId, customer, (error) => {
+                            Meteor.call('saveStripeCustomer', customer, (error, result) => {
                               if (error) {
                                 console.log(error);
                               } else {
-                                Meteor.call('subscribeCustomerToPlan', customer.id, (error, subscription) => {
+                                Meteor.call('updateLocalUserAccountWithStripeId', userId, customer, (error) => {
                                   if (error) {
-                                    console.log(error)
+                                    console.log(error);
                                   } else {
-                                    console.log(result);
-                                    Meteor.call('saveSubscription', subscription, (error) => {
+                                    Meteor.call('subscribeCustomerToPlan', customer.id, (error, subscription) => {
                                       if (error) {
-                                        console.log(error);
+                                        console.log(error)
                                       } else {
-                                        Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error) => {
+                                        console.log(result);
+                                        Meteor.call('saveSubscription', subscription, (error) => {
                                           if (error) {
                                             console.log(error);
                                           } else {
-                                            Meteor.call('updateOrganizationWithStrip', organizationId, customer, subscription, (error) => {
+                                            Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error) => {
                                               if (error) {
                                                 console.log(error);
                                               } else {
-                                                FlowRouter.go("dashboard");
+                                                Meteor.call('updateOrganizationWithStrip', organizationId, customer, subscription, (error) => {
+                                                  if (error) {
+                                                    console.log(error);
+                                                  } else {
+                                                    FlowRouter.go("dashboard");
+                                                  }
+                                                } )
                                               }
-                                            } )
+                                            })
                                           }
                                         })
                                       }
@@ -149,13 +159,13 @@ Template.signup_form.onRendered(() => {
                               }
                             })
                           }
-                        })
+                        });
                       }
-                    });
+                    })
                   }
                 })
-              }
-            })
+              
+            
           }
         });
       }
