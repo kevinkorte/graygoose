@@ -1,5 +1,16 @@
+//foundational styles
 @import './base';
+@import './colors';
+@import './borders';
+
+//components that can be used throughout
 @import './badges';
+@import './buttons';
 @import './navigation';
 @import './layout';
 @import './cards';
+@import './forms';
+@import './text';
+
+//styling for pages, often needs to override more generaic styles
+@import './signup.scss';

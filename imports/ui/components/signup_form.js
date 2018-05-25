@@ -8,9 +8,13 @@ import {
   Accounts
 } from 'meteor/accounts-base'
 
+import zxcvbn from 'zxcvbn';
+import validate from 'jquery-validation';
+
 import "./signup_form.html";
 import Customers from "../../api/Customers/Customers";
 import Subscriptions from "../../api/Subscriptions/Subscriptions";
+import { format } from "path";
 
 const stripe = Stripe(Meteor.settings.public.stripe_test_pk);
 const elements = stripe.elements();
@@ -31,8 +35,8 @@ Template.signup_form.onRendered(() => {
   const style = {
     base: {
       // Add your base input styles here. For example:
-      fontSize: '16px',
-      color: "#32325d",
+      // fontSize: '16px',
+      // color: "#32325d",
     },
   };
 
@@ -44,16 +48,46 @@ Template.signup_form.onRendered(() => {
   // Add an instance of the card Element into the `card-element` <div>.
   card.mount('#card-element');
 
-  card.addEventListener('change', ({
-    error
-  }) => {
-    const displayError = document.getElementById('card-errors');
-    if (error) {
-      displayError.textContent = error.message;
-    } else {
-      displayError.textContent = '';
+
+  $('#signup').validate({
+    rules: {
+      firstName: {
+        required: true
+      },
+      lastName: {
+        required: true
+      },
+      email: {
+        required: true,
+        email: true
+      },
+      password: {
+        required: true
+      }
+    },
+    errorClass: 'is-invalid',
+    validClass: 'is-valid',
+    submitHandler: function(form) {
+
+      console.log('SUBMIT', form);
+
     }
   });
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
   const form = document.getElementById('signup');
   form.addEventListener('submit', async (event) => {
@@ -176,7 +210,21 @@ Template.signup_form.onRendered(() => {
 })
 
 Template.signup_form.events({
-
+  'keyup #password'(event) {
+    let helper = zxcvbn(event.target.value);
+    $('#password-suggestion').text(helper.feedback.warning);
+    if (helper.score == 0) {
+      $('#strength').removeClass('strength-1 strength-2 strength-3 strength-4').addClass('strength-0');
+    } else if (helper.score == 1) {
+      $('#strength').removeClass('strength-0 strength-2 strength-3 strength-4').addClass('strength-1');
+    } else if (helper.score == 2) {
+      $('#strength').removeClass('strength-0 strength-1 strength-3 strength-4').addClass('strength-2');
+    } else if (helper.score == 3) {
+      $('#strength').removeClass('strength-0 strength-1 strength-2 strength-4').addClass('strength-3');
+    } else if (helper.score == 4) {
+      $('#strength').removeClass('strength-0 strength-1 strength-2 strength-3').addClass('strength-4');
+    }
+  }
 });
 
 Template.signup_form.helpers({

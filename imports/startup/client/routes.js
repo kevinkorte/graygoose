@@ -7,6 +7,12 @@ import '../../ui/pages/Team/team';
 
 
 FlowRouter.route('/signup', {
+  triggersEnter: function (context, params) {
+    $('body').addClass('signup');
+  },
+  triggersExit: function (context, params) {
+    $('body').removeClass('signup');
+  },
   name: "signup",
   action: function () {
     BlazeLayout.render("main");
