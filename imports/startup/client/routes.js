@@ -3,6 +3,7 @@ import "../../ui/pages/main.js";
 import '../../ui/pages/adminNav.js';
 import '../../ui/pages/billing.js';
 import '../../ui/pages/Dashboard/dashboard';
+import '../../ui/pages/Team/team';
 
 
 FlowRouter.route('/signup', {
@@ -36,6 +37,21 @@ FlowRouter.route('/dashboard/billing', {
   action: function () {
     BlazeLayout.render("App.home", {
       template: "billing"
+    });
+  }
+});
+
+FlowRouter.route('/dashboard/team', {
+  name: 'team',
+  triggersEnter: function (context, params) {
+    $('body').addClass('light-background');
+  },
+  triggersExit: function (context, params) {
+    $('body').removeClass('light-background');
+  },
+  action: function () {
+    BlazeLayout.render("App.home", {
+      template: "team"
     });
   }
 })

@@ -1,7 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
+import { Tracker } from 'meteor/tracker';
 
 import './nav_dashboard.html';
+
+Template.nav_dashboard.onRendered(() => {
+  Tracker.autorun(() => {
+    Meteor.subscribe('this.user');
+  })
+})
 
 Template.nav_dashboard.helpers({
   canSeeAdminMenu() {
