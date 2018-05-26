@@ -8,7 +8,19 @@ Template.team_table_row.helpers({
   getUser(id) {
     return Meteor.users.findOne(id);
   },
-  role() {
-    console.log('get role');
+  getUserRoleBadge(userId) {
+    let user;
+    user = Meteor.users.findOne(userId);
+    if (user) {
+      if (Roles.userIsInRole(userId, 'owner', user.organizationId)) {
+        return 'owner'
+      } else if (Roles.userIsInRole(userId, 'admin', user.organizationId)) {
+        return 'admin'
+      } else {
+        return 'team member'
+      }
+    }
+
+
   }
 })

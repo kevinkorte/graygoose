@@ -6,6 +6,7 @@ import Organizations from '../../../api/Organizations/Organizations';
 
 import './team_table.html';
 import './team_table_row.js';
+import '../Navigation/Dashboard/nav_admin';
 
 Template.team_table.onRendered(() => {
   Tracker.autorun(() => {

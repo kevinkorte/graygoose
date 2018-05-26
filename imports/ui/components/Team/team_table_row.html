@@ -2,8 +2,9 @@
   {{#with getUser this}}
   <tr>
     <td>{{profile.name.first}} {{profile.name.last}}</td>
-    <td>{{role}}</td>
+    <td><span class="badge badge-pill badge-{{getUserRoleBadge _id}}">{{getUserRoleBadge _id}}</span></td>
     <td>{{emails.[0].address}}</td>
+    <td></td>
   </tr>
 {{/with}}
 </template>
