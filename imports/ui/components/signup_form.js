@@ -31,6 +31,8 @@ Template.signup_form.onCreated(() => {
 
 Template.signup_form.onRendered(() => {
 
+  
+
   // Custom styling can be passed to options when creating an Element.
   const style = {
     base: {
@@ -79,45 +81,23 @@ Template.signup_form.onRendered(() => {
     errorClass: 'is-invalid',
     validClass: 'is-valid',
     submitHandler: function(form) {
+      event.preventDefault();
 
       console.log('SUBMIT', form);
+      console.log('EVENT', event);
+      test();
 
-    }
-  });
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-  const form = document.getElementById('signup');
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-
-    const {
-      token,
-      error
-    } = await stripe.createToken(card);
-
-    if (error) {
-      // Inform the customer that there was an error.
-      const errorElement = document.getElementById('card-errors');
-      errorElement.textContent = error.message;
-    } else {
-      // Send the token to your server.
-      stripeTokenHandler(token);
-    }
-  });
+      async function test() {
+        const {token,error} = await stripe.createToken(card);
+        if (error) {
+          // Inform the customer that there was an error.
+          const errorElement = document.getElementById('card-errors');
+          errorElement.textContent = error.message;
+        } else {
+          // Send the token to your server.
+          stripeTokenHandler(token);
+        }
+      }
 
   const stripeTokenHandler = (token) => {
     // Insert the token ID into the form so it gets submitted to the server
@@ -130,8 +110,8 @@ Template.signup_form.onRendered(() => {
     form.appendChild(hiddenInput);
 
     // Submit the form
-    const email = $('#exampleInputEmail1').val();
-    const password = $("#exampleInputPassword1").val();
+    const email = $('#email').val();
+    const password = $("#password").val();
     const firstname = $('#first-name').val();
     const lastname = $('#last-name').val();
     token = $("#stripeToken").val();
@@ -216,7 +196,8 @@ Template.signup_form.onRendered(() => {
       }
     });
   }
-
+  }
+});
 
 })
 
