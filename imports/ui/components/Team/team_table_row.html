@@ -1,0 +1,9 @@
+<template name="team_table_row">
+  {{#with getUser this}}
+  <tr>
+    <td>{{profile.name.first}} {{profile.name.last}}</td>
+    <td>{{role}}</td>
+    <td>{{emails.[0].address}}</td>
+  </tr>
+{{/with}}
+</template>

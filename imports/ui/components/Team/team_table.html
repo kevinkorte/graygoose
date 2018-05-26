@@ -1,4 +1,11 @@
 <template name="team_table">
   Table
   {{#each getAllTeamMembers}}{{this}}{{/each}}
+  <table class="table">
+    <tbody>
+      {{#each getAllTeamMembers}}
+      {{> team_table_row this}}
+      {{/each}}
+    </tbody>
+  </table>
 </template>

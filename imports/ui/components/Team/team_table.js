@@ -5,6 +5,7 @@ import { Tracker } from 'meteor/tracker';
 import Organizations from '../../../api/Organizations/Organizations';
 
 import './team_table.html';
+import './team_table_row.js';
 
 Template.team_table.onRendered(() => {
   Tracker.autorun(() => {
@@ -14,8 +15,8 @@ Template.team_table.onRendered(() => {
 
 Template.team_table.helpers({
   getAllTeamMembers() {
-    let userId = Meteor.userId();
-    let user = Meteor.users.findOne(userId);
+    let user;
+    user = Meteor.user();
     if (user) {
       let org = Organizations.findOne(user.organizationId);
       return org.users;
