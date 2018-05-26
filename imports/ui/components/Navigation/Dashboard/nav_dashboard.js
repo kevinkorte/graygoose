@@ -21,5 +21,13 @@ Template.nav_dashboard.helpers({
         return false;
       }
     }
+  },
+  firstName() {
+    let user = Meteor.user();
+    if (user) {
+      return user.profile.name.first;
+    } else {
+      return "friend"
+    }
   }
 })

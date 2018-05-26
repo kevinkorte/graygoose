@@ -19,3 +19,8 @@
 .user-email {
   color: hsla(209, 21%, 44%, 1);
 }
+
+.verify-email-header {
+  @extend .gradient;
+  line-height: 16px;
+}
