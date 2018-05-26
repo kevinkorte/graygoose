@@ -1,16 +1,13 @@
 <template name="nav_admin">
   <ul class="nav nav-admin">
     <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
+      <a class="nav-link {{isActiveRoute 'team'}}" href="{{pathFor 'team'}}">Team</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#">Billing</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
+      <a class="nav-link" href="#">Admin Settings</a>
     </li>
   </ul>
 </template>

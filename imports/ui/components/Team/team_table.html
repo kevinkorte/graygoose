@@ -1,6 +1,15 @@
 <template name="team_table">
+  {{> team_options }}
   {{> nav_admin }}
   <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Permissions</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
     <tbody>
       {{#each getAllTeamMembers}}
       {{> team_table_row this}}

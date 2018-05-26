@@ -2,3 +2,27 @@
     background: hsl(134, 53%, 48%);
     border-color: hsl(134, 53%, 48%);
 }
+.btn-white {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px rgba(50,50,93,.1), 0 2px 5px 0 rgba(50,50,93,.08), 0 1px 1.5px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08), 0 0 0 0 transparent;
+    color: #525f7f;
+    transition: box-shadow .08s ease-in,color .08s ease-in;
+
+    &:hover {
+        background-color: #fff;
+        box-shadow: 0 0 0 1px rgba(50,50,93,.1), 0 2px 5px 0 rgba(50,50,93,.1), 0 3px 9px 0 rgba(50,50,93,.08), 0 1px 1.5px 0 rgba(0,0,0,.08), 0 1px 2px 0 rgba(0,0,0,.08);
+        color: #32325d;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 1px rgba(50,151,211,.2), 0 0 0 2px rgba(50,151,211,.25), 0 2px 5px 0 rgba(50,50,93,.1), 0 1px 1px 0 rgba(0,0,0,.07), 0 1px 2px 0 rgba(0,0,0,.08);
+    outline: 0;
+    }
+
+    &:active {
+        background-color: #fff;
+        box-shadow: 0 0 0 1px rgba(50,50,93,.08), 0 2px 5px 0 rgba(50,50,93,.06), 0 1px 1.5px 0 rgba(0,0,0,.05), 0 1px 2px 0 rgba(0,0,0,.06), 0 0 0 0 transparent;
+        color: #32325d;
+    }
+}
