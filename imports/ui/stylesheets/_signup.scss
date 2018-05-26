@@ -4,5 +4,26 @@
 .signup-sidebar {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    background: $secondary-gray;
+    // background: $secondary-gray;
+    background-image: url('/img/cityOverhead.jpg');
+    background-size: cover;
+    background-position: center;
 }
+.price-wrapper {
+    color: #fff;
+    text-shadow: 0px 0px 14px hsl(213, 16%, 27%);
+    text-align: center;
+
+    & .price {
+        font-size: 2.5rem;
+        padding-right: 8px;
+    }
+
+    & .price-interval {
+        text-align: left;
+        font-size: 0.85rem;
+        opacity: 0.8;
+        vertical-align: sub;
+    }
+}
+

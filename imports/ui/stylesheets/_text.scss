@@ -2,5 +2,12 @@
     color: hsla(211, 14%, 36%, 1);
 }
 .form-label-gray {
-    color: hsla(211, 12%, 47%, 1)
+    color: hsla(211, 12%, 47%, 1);
+}
+.text-gray {
+    color: hsla(211, 12%, 47%, 1);
+
+    &:hover {
+        color: hsla(211, 12%, 47%, 1);
+    }
 }

@@ -48,6 +48,17 @@ Template.signup_form.onRendered(() => {
   // Add an instance of the card Element into the `card-element` <div>.
   card.mount('#card-element');
 
+  card.addEventListener('change', function(event) {
+    var displayError = document.getElementById('card-errors');
+    if (event.error) {
+      displayError.textContent = event.error.message;
+      $('#signup-submit-btn').attr('disabled', 'disabled');
+    } else {
+      displayError.textContent = '';
+      $('#signup-submit-btn').removeAttr('disabled', 'disabled');
+    }
+  });
+
 
   $('#signup').validate({
     rules: {

@@ -8,12 +8,20 @@
 .StripeElement--invalid {
     border-color: #dc3545;
 }
+.StripeElement--complete {
+    border-color: #28a745;
+}
 .StripeElement--focus.StripeElement--invalid {
     border-color: #dc3545;
-    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25)
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+.StripeElement--focus.StripeElement--complete {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40,167,69,.25);
 }
 //Stripes default placeholder with Bootstrap's default styles
-#card-errors {
+#card-errors,
+label.is-invalid {
     width: 100%;
     margin-top: .25rem;
     font-size: 80%;
