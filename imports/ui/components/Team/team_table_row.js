@@ -4,6 +4,12 @@ import { Tracker } from 'meteor/tracker';
 
 import './team_table_row.html';
 
+Template.team_table_row.onRendered(() => {
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+})
+
 Template.team_table_row.helpers({
   getUser(id) {
     return Meteor.users.findOne(id);

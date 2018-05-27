@@ -11,3 +11,10 @@
         color: hsla(211, 12%, 47%, 1);
     }
 }
+.text-gray--lighter {
+    color: hsla(211, 12%, 72%, 1);
+
+    &:hover {
+        color: hsla(211, 12%, 47%, 1);
+    }
+}

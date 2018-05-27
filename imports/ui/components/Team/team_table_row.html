@@ -4,7 +4,10 @@
     <td>{{profile.name.first}} {{profile.name.last}}</td>
     <td><span class="badge badge-pill badge-{{getUserRoleBadge _id}}">{{getUserRoleBadge _id}}</span></td>
     <td>{{emails.[0].address}}</td>
-    <td></td>
+    <td>
+      <button type="button" class="btn btn-link text-gray--lighter" data-toggle="tooltip" data-placement="top" title="Edit User Permissions"><i class="fas fa-wrench"></i></button>
+      <button type="button" class="btn btn-link text-gray--lighter" data-toggle="tooltip" data-placement="top" title="Delete Member"><i class="fas fa-user-times"></i></button>
+    </td>
   </tr>
 {{/with}}
 </template>
