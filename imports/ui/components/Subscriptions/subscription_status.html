@@ -1,3 +1,27 @@
 <template name="subscription_status">
-  Subscription Status {{getSubscriptionStatus}}
+  <div class="d-flex">
+    <div class="subscription-status p-3 my-3 mx-2 border br-4 position-relative">
+      <span class="box-title text-gray text-uppercase position-absolute">Status</span>
+      <span class="subscription-status-indicator indicator-{{getSubscriptionStatus}}"></span>
+      <span class="text-capitalize ml-2 text-gray">{{getSubscriptionStatusText}}</span>
+    </div>
+    <div class="next-payment p-3 my-3 mx-2 border br-4 position-relative">
+      <span class="box-title text-gray text-uppercase position-absolute">Renewal Date</span>
+      <span class="text-gray">Renews: 6/4/18</span>
+    </div>
+    <div class="next-payment p-3 my-3 mx-2 border br-4 position-relative">
+      <span class="box-title text-gray text-uppercase position-absolute">Payment</span>
+      <span class="text-gray">
+        <span class="payment-card">Visa</span>
+        <span class="payment-card-number">&mdash; 4242</span>
+      </span>
+    </div>
+    <div class="seats p-3 my-3 mx-2 border br-4 position-relative">
+      <span class="box-title text-gray text-uppercase position-absolute">Members</span>
+      <span class="text-gray">Members: 1</span>
+    </div>
+    <div class="align-self-center flex-grow-1">
+      <button type="button" class="float-right btn btn-light btn-white">Update Card</button>
+    </div>
+  </div>
 </template>

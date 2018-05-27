@@ -1,9 +1,9 @@
 import '../../ui/layouts/App_home.html';
 import "../../ui/pages/main.js";
 import '../../ui/pages/adminNav.js';
-import '../../ui/pages/billing.js';
 import '../../ui/pages/Dashboard/dashboard';
 import '../../ui/pages/Team/team';
+import '../../ui/pages/Billing/billing';
 
 
 FlowRouter.route('/signup', {
