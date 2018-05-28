@@ -26,3 +26,11 @@
         color: #32325d;
     }
 }
+
+.btn-new {
+    @extend .gradient;
+    color: #fff;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 18px;
+}

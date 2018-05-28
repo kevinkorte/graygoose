@@ -4,6 +4,7 @@ import '../../ui/pages/adminNav.js';
 import '../../ui/pages/Dashboard/dashboard';
 import '../../ui/pages/Team/team';
 import '../../ui/pages/Billing/billing';
+import '../../ui/pages/New/new';
 
 
 FlowRouter.route('/signup', {
@@ -58,6 +59,21 @@ FlowRouter.route('/dashboard/team', {
   action: function () {
     BlazeLayout.render("App.home", {
       template: "team"
+    });
+  }
+})
+
+FlowRouter.route('/new', {
+  name: 'new',
+  triggersEnter: function (context, params) {
+    $('body').addClass('light-background');
+  },
+  triggersExit: function (context, params) {
+    $('body').removeClass('light-background');
+  },
+  action: function () {
+    BlazeLayout.render("App.home", {
+      template: "new"
     });
   }
 })
