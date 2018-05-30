@@ -1,11 +1,15 @@
 <template name="new">
   {{> nav_dashboard }}
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-9 bg-white br-10 new-container py-4 d-flex justify-content-center">
+  <div class="container bg-white br-10 new-container py-4">
+    <div class="row">
+      <!-- <div class="col-12 bg-white br-10 new-container py-4 d-flex justify-content-center"> -->
+        <div class="col-3"></div>
+        <div class="col-9"><h3 class="header-gray mb-4"><i class="fas fa-map-signs"></i> Create a New Showing</h3></div>
+        <div class="col-3 pt-24px">
+          <small class="text-gray">Select the starting and ending day and time. You can always change these later.</small>
+        </div>
         <div class="col-9">
-            <h3 class="header-gray mb-4">Create a New Showing</h3>
-            <div class="form-group row mb-5">
+          <div class="form-group row mb-5">
               <div class="col-6">
                 <label for="start" class="form-label-gray">Start</label>
                 <input type="text" name="start" class="form-control" id="start" placeholder="Start">
@@ -15,13 +19,47 @@
                 <input type="text" name="end" class="form-control" id="end" placeholder="End">
               </div>
             </div>
+        </div>
+        <div class="col-3 pt-24px">
+          <small class="text-gray">Enter the address to the location you're planning to be. We'll populate a map.
+            You can modify the text if it's not quite right, or click and drag the map icon to reposition it.
+          </small>
+        </div>
+        <div class="col-9">
             <div class="form-group">
               <label for="address" class="form-label-gray">Address</label>
               <input type="text" class="form-control" id="address">
             </div>
+            <div id="map" class="mb-5">
+              <img class="img-fluid" src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap
+              &markers=color:red%7C40.718217,-73.998284
+              &key=AIzaSyApmcx3wYJTdoVMjbWtpf3QWu17FnsUodU" alt="Map">
+            </div>
+            </div>
+            <div class="col-3">
+              <small class="text-gray">
+                  Quickly add existing followers in the dropdown menu, or add a new one if needed.
+              </small></div>
+              <div class="col-9">
+                  <div class="followers mb-5">
+                      <div class="row">
+                        <div class="col-8">
+                            <select name="followers" id="followers" class="w-100">
+                                <option>Select Followers</option>
+                                <option value="1">Kevin</option>
+                              </select>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="float-right btn btn-light btn-white"> <i class="fas fa-user-plus"></i> New Follower</button>
+                        </div>
+                      </div>
+        
+                    </div>
+              </div>
+  
             <button type="submit" id="showing-submit-btn" class="float-right btn btn-success btn-success--modifier">Create Showing</button>
-        </div>
+        <!-- </div> -->
       </div>
-    </div>
+
   </div>
 </template>
