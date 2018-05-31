@@ -4,7 +4,19 @@
     <div class="row">
       <!-- <div class="col-12 bg-white br-10 new-container py-4 d-flex justify-content-center"> -->
         <div class="col-3"></div>
-        <div class="col-9"><h3 class="header-gray mb-4"><i class="fas fa-map-signs"></i> Create a New Showing</h3></div>
+        <div class="col-9">
+          <h3 class="header-gray mb-4"><i class="fas fa-map-signs"></i> Create a New Showing</h3>
+          <hr>
+        </div>
+        <div class="col-3">
+          <small class="text-gray">If you're meeting someone, let us know and you can add more details about them below.</small>
+        </div>
+        <div class="col-9 mb-5">
+            <div class="btn-group btn-group-lg" role="group" aria-label="">
+                <button type="button" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-users"></i> Meeting People</button>
+                <button type="button" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-home"></i> Open Showing</button>
+            </div>
+        </div>
         <div class="col-3 pt-24px">
           <small class="text-gray">Select the starting and ending day and time. You can always change these later.</small>
         </div>
@@ -22,7 +34,7 @@
         </div>
         <div class="col-3 pt-24px">
           <small class="text-gray">Enter the address to the location you're planning to be. We'll populate a map.
-            You can modify the text if it's not quite right, or click and drag the map icon to reposition it.
+            You can modify the address if it's not quite right, or click and drag the map icon to reposition it.
           </small>
         </div>
         <div class="col-9">
@@ -31,17 +43,17 @@
               <input type="text" class="form-control" id="address">
             </div>
             <div id="map" class="mb-5">
-              <img class="img-fluid" src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap
+              <img class="" src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=640x350&maptype=roadmap
               &markers=color:red%7C40.718217,-73.998284
               &key=AIzaSyApmcx3wYJTdoVMjbWtpf3QWu17FnsUodU" alt="Map">
             </div>
             </div>
-            <div class="col-3">
+            <div class="col-3 mb-5">
               <small class="text-gray">
                   Quickly add existing followers in the dropdown menu, or add a new one if needed.
               </small></div>
-              <div class="col-9">
-                  <div class="followers mb-5">
+              <div class="col-9 mb-5">
+                  <div class="followers">
                       <div class="row">
                         <div class="col-8">
                             <select name="followers" id="followers" class="w-100">
@@ -54,6 +66,33 @@
                         </div>
                       </div>
         
+                    </div>
+              </div>
+              <div class="col-3">
+                <small class="text-gray">Add any supplemental information about who you are visiting that you'd like.</small>
+              </div>
+              <div class="col-9">
+                <div class="form-group row">
+                  <label for="personOne" class="col-3 col-form-label form-label-gray">Person One</label>
+                  <div class="col-9">
+                    <input type="text" class="form-control" id="personOne">
+                    <small id="personOneHelp" class="form-text text-muted">Optional</small>
+                  </div>
+                </div>
+                <div class="form-group row">
+                    <label for="personTwo" class="col-3 col-form-label form-label-gray">Person Two</label>
+                    <div class="col-9">
+                      <input type="text" class="form-control" id="personTwo">
+                      <small id="personTwoHelp" class="form-text text-muted">Optional</small>
+                    </div>
+                  </div>
+
+                  <div class="form-group row mb-5">
+                      <label for="theirAddress" class="col-3 col-form-label form-label-gray">Their Address</label>
+                      <div class="col-9">
+                        <input type="text" class="form-control" id="theirAddress">
+                        <small id="theirAddressHelp" class="form-text text-muted">Optional</small>
+                      </div>
                     </div>
               </div>
   
