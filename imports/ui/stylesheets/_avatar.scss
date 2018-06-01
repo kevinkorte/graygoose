@@ -1,0 +1,13 @@
+.avatar {
+  background: gray;
+  border-radius: 4px;
+  color: hsl(230, 13%, 53%);
+  padding-top: 3px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background: hsl(230, 16%, 83%);
+
+  & svg {
+    margin-bottom: -4px;
+  }
+}
