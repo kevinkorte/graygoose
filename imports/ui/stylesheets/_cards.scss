@@ -19,3 +19,6 @@
 .active-card {
   box-shadow: 0px 0px 0px 3px hsl(120, 53%, 57%), 0px 0px 0px 8px hsla(147, 68%, 75%, 0.5411764705882353);
 }
+.expired-card {
+  box-shadow: 0px 0px 0px 3px hsla(0, 53%, 57%, 1), 0px 0px 0px 8px rgba(235, 148, 148, 0.541176);
+}
