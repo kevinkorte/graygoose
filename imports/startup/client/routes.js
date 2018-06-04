@@ -5,6 +5,7 @@ import '../../ui/pages/Dashboard/dashboard';
 import '../../ui/pages/Team/team';
 import '../../ui/pages/Billing/billing';
 import '../../ui/pages/New/new';
+import '../../ui/pages/Single/single';
 
 
 FlowRouter.route('/signup', {
@@ -74,6 +75,15 @@ FlowRouter.route('/new', {
   action: function () {
     BlazeLayout.render("App.home", {
       template: "new"
+    });
+  }
+});
+
+FlowRouter.route('/user/id', {
+  name: 'single',
+  action: function () {
+    BlazeLayout.render("App.home", {
+      template: "single"
     });
   }
 })
