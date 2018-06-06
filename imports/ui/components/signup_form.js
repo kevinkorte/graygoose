@@ -82,12 +82,11 @@ Template.signup_form.onRendered(() => {
     validClass: 'is-valid',
     submitHandler: function(form) {
       event.preventDefault();
+      $('.spinner').addClass('d-block')
 
-      console.log('SUBMIT', form);
-      console.log('EVENT', event);
-      test();
+      createToken();
 
-      async function test() {
+      async function createToken() {
         const {token,error} = await stripe.createToken(card);
         if (error) {
           // Inform the customer that there was an error.
@@ -115,10 +114,12 @@ Template.signup_form.onRendered(() => {
     const firstname = $('#first-name').val();
     const lastname = $('#last-name').val();
     token = $("#stripeToken").val();
+    console.log('before call');
     Meteor.call('checkAndCreateAccount', email, password, (error, userId) => {
       if (error) {
         console.error(error);
       } else {
+        console.log('accounts');
         Accounts.createUser({
           email: email,
           password: password,
@@ -133,6 +134,7 @@ Template.signup_form.onRendered(() => {
             console.log(error);
           } else {
             let userId = Meteor.userId();
+            console.log('start');
                 Meteor.call('createNewOrganization', (error, organizationId) => {
                   if (error) {
                     console.log(error);
