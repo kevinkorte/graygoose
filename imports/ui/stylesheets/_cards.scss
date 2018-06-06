@@ -22,3 +22,14 @@
 .expired-card {
   box-shadow: 0px 0px 0px 3px hsla(0, 53%, 57%, 1), 0px 0px 0px 8px rgba(235, 148, 148, 0.541176);
 }
+.card.icon-background {
+  overflow: hidden;
+}
+.background-icon {
+  position: absolute;;
+  right: 12px;
+  font-size: 13rem;
+  bottom: -41px;
+  color: #dfe1e8;
+  z-index: 1;
+}

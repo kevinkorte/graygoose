@@ -1,83 +1,24 @@
 <template name="dashboard">
   {{> nav_dashboard }}
   <div class="container-fluid">
-<div class="row justify-content-center">
-
-
-        {{> card }}
-
-
-        <a href="#" class="card-anchor m-3 page-shadow br-10" style="width: 29%;">
-          <div class="card br-10 active-card">
-            <img class="card-img-top" src="https://maps.googleapis.com/maps/api/staticmap?center=47.678366,-122.191450&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C" alt="Card image cap">
-            <div class="card-body">
-              <h6 class="card-subtitle mb-2 text-muted"><small class="text-uppercase">Showing</small></h6>
-              <h5 class="card-title mb-3">925 5th Ave, Kirkland, WA 98033</h5>
-              <div class="card-text d-flex mb-3">
-                <div class="avatar mr-2"><i class="fas fa-user"></i></div>
-                <div class="username text-gray">Steve</div>
-              </div>
-              <div class="card-text d-flex justify-content-between text-gray">
-                <div class="start flex-grow-1">
-                  <div class="date">6/8/18</div>
-                  <div class="time">8:00PM</div>
-                </div>
-                <i class="fas fa-long-arrow-alt-right fa-2x align-self-center mx-2"></i>
-                <div class="end flex-grow-1">
-                  <div class="date">6/8/18</div>
-                  <div class="time">10:00PM</div>
-                </div>
-              </div>
-              <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a> -->
-            </div>
-          </div>
-          </a>
-
-
-
-
-
-
-
-          <a href="#" class="card-anchor m-3 page-shadow br-10" style="width: 29%;">
-            <div class="card br-10">
-              <img class="card-img-top" src="https://maps.googleapis.com/maps/api/staticmap?center=47.631135,-122.197659&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C" alt="Card image cap">
-              <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted"><small class="text-uppercase">Showing</small></h6>
-                <h5 class="card-title mb-3">13 Diamond S Ranch, Bellevue, WA 98004</h5>
-                <div class="card-text d-flex mb-3">
-                  <div class="avatar mr-2"><i class="fas fa-user"></i></div>
-                  <div class="username text-gray">Mary</div>
-                </div>
-                <div class="card-text d-flex justify-content-between text-gray">
-                  <div class="start flex-grow-1">
-                    <div class="date">6/11/18</div>
-                    <div class="time">5:00PM</div>
-                  </div>
-                  <i class="fas fa-long-arrow-alt-right fa-2x align-self-center mx-2"></i>
-                  <div class="end flex-grow-1">
-                    <div class="date">6/11/18</div>
-                    <div class="time">6:15PM</div>
-                  </div>
-                </div>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="card-link">Card link</a>
-                <a href="#" class="card-link">Another link</a> -->
-              </div>
-            </div>
-            </a>
-
-
-
-        
-
-
-
-
-
+    <div class="row justify-content-center">
+      <div class="card mx-3 flex-fill icon-background">
+        <i class="fab fa-telegram-plane background-icon"></i>
+        <div class="card-body z-100">
+            <div class="z-100header-gray h6">Invite Other Team Members</div>
+            <div class="z-100 text-muted">It's more fun with friends.</div>
+            <button class="z-100 btn btn-light btn-white btn-block mt-5 position-relative"><i class="fas fa-user-plus"></i> Invite Team Members</button>
+        </div>
       </div>
+      <div class="card mx-3 flex-fill icon-background">
+        <i class="fas fa-home background-icon"></i>
+        <div class="card-body z-100">
+          <div class="header-gray h6 z-100">Create a New Showing</div>
+          <div class="text-muted z-100">Let's get this party started.</div>
+          <button class="z-100 btn btn-light btn-white btn-block mt-5 position-relative"><i class="fas fa-plus"></i> Create a New Showing</button>
+        </div>
+      </div>
+    </div>
   </div>
   
 </template>
