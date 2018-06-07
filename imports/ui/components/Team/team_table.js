@@ -11,6 +11,7 @@ import '../Navigation/Dashboard/nav_admin';
 Template.team_table.onRendered(() => {
   Tracker.autorun(() => {
     Meteor.subscribe('org');
+    Meteor.subscribe('org.users', {orgId: Meteor.user().organizationId});
   })
 })
 

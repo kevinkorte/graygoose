@@ -7,4 +7,10 @@ Meteor.publish('org', () => {
   if (user) {
     return Organizations.find({_id: user.organizationId});
   }
+});
+
+Meteor.publish('org.users', function (orgId) {
+  console.log(orgId);
+  // check(orgId, String);
+  return Meteor.users.find({organizationId: orgId});
 })
