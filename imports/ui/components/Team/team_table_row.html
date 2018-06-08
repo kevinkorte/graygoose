@@ -2,7 +2,19 @@
   {{#with getUser this}}
   <tr>
     <td>{{profile.name.first}} {{profile.name.last}}</td>
-    <td><span class="badge badge-pill badge-{{getUserRoleBadge _id}}">{{getUserRoleBadge _id}}</span></td>
+    <td>
+      <div class="dropdown">
+        <button class="btn btn-link dropdown-toggle badge-{{getUserRoleBadge _id}} badge-wrapper" data-toggle="dropdown">
+          <span class="badge badge-pill badge-{{getUserRoleBadge _id}}">{{getUserRoleBadge _id}}</span>
+        </button>
+        <div class="dropdown-menu page-shadow">
+          <a href="#" class="dropdown-item">
+            <div class="text-gray"><i class="fas fa-user-shield"></i> Make Admin</div>
+          </a>
+        </div>
+      </div>
+      
+    </td>
     <td>{{emails.[0].address}}</td>
     <td>
       {{#if hasNotRegistered}}
