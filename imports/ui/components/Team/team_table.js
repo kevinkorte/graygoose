@@ -20,11 +20,9 @@ Template.team_table.helpers({
     let user;
     user = Meteor.user();
     if (user) {
-      let org;
-      org = Organizations.findOne(user.organizationId);
-      if (org) {
-        return org.users;
-      }
+      console.log(user);
+      console.log(user.organizationId);
+      return Meteor.users.find({ organizationId: { $eq: user.organizationId } } );
     }
   }
 })

@@ -26,8 +26,11 @@ Meteor.methods({
       resolve(id);
     });
     userId.then((id) => {
-      console.log('org id', organizationId);
-      console.log(id);
+      Meteor.users.update(id, { $set: {
+        'profile.name.first': 'Keith',
+        'profile.name.last': 'Kort',
+        organizationId: organizationId
+      }});
       Organization.update(organizationId, { $push: { users: id } } );
     })
   }

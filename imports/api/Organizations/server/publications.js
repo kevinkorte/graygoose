@@ -9,8 +9,3 @@ Meteor.publish('org', () => {
   }
 });
 
-Meteor.publish('org.users', function (orgId) {
-  console.log(orgId);
-  // check(orgId, String);
-  return Meteor.users.find({organizationId: orgId});
-})
