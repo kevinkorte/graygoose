@@ -37,5 +37,12 @@ Meteor.methods({
       Organization.update(organizationId, { $push: { users: id } } );
       Meteor.call('updateSubscriptionQuantity', organizationId);
     })
+  },
+  revokeUserInvite(id) {
+    try {
+      Meteor.users.remove(id);
+    } catch (e) {
+      throw new Meteor.Error('revoke-user-error', "Error");
+    }
   }
 });

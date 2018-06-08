@@ -54,9 +54,6 @@ Meteor.methods({
         if (org) {
           sub = Subscriptions.find({'subscription.id': org.stripeSubscriptionId}).fetch();
           if (sub) {
-            console.log('sub = ', sub);
-            console.log('!!!', sub[0].subscription.items.data[0].id);
-            console.log('quantity = ', org.users.length);
             stripe.subscriptionItems.update(sub[0].subscription.items.data[0].id, {
               quantity: quantity //org.users.length
             },
@@ -64,7 +61,6 @@ Meteor.methods({
               if (error) {
                 console.log('error', error);
               } else {
-                console.log(subItem)
               }
             })
           }

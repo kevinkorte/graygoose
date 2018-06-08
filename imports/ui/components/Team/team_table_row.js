@@ -27,7 +27,21 @@ Template.team_table_row.helpers({
         return 'member'
       }
     }
+  },
+  hasNotRegistered() {
+    return true;
+  }
+});
 
-
+Template.team_table_row.events({
+  'click #revokeInvite'(event) {
+    let id = $(event.target).data('id');
+    Meteor.call('revokeUserInvite', id, (error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        Meteor.call('updateSubscriptionQuantity', Meteor.user().organizationId);
+      }
+    })
   }
 })
