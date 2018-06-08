@@ -19,8 +19,10 @@ Template.new_team_modal.onRendered(() => {
     submitHandler: function(form) {
       event.preventDefault();
       const email = $('#email').val();
+      const firstName = $('#firstName').val();
+      const lastName = $('#lastName').val();
       const organizationId = Meteor.user().organizationId;
-      Meteor.call('enrollNewUser', email, organizationId, (error) => {
+      Meteor.call('enrollNewUser', email, firstName, lastName, organizationId, (error) => {
         if (error) {
           console.log(error);
         }

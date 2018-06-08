@@ -13,11 +13,6 @@ Template.team_table_row.onRendered(() => {
 
 Template.team_table_row.helpers({
   getUser(id) {
-    console.log(id);
-    console.log(Meteor.users.findOne(id));
-    let user;
-    user = Meteor.users.findOne(id);
-    console.log(user);
     return Meteor.users.findOne(id);
   },
   getUserRoleBadge(userId) {

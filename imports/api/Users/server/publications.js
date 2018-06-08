@@ -6,8 +6,7 @@ Meteor.publish('this.user', function() {
 });
 
 Meteor.publish('org.users', function (orgId) {
-  console.log(orgId);
-  // check(orgId, String);
-  // console.log(Meteor.users.find({organizationId: orgId}));
-  return Meteor.users.find({organizationId: orgId});
+  //this is for production
+  // return Meteor.users.find({organizationId: orgId});
+  return Meteor.users.find();
 })

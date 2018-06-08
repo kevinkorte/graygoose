@@ -2,6 +2,7 @@ import {
   Meteor
 } from 'meteor/meteor';
 import Subscriptions from './Subscriptions';
+import Organization from '../Organizations/Organizations';
 
 import stripePackage from 'stripe';
 const stripe = stripePackage(Meteor.settings.private.stripe_test_sk);
@@ -40,6 +41,37 @@ Meteor.methods({
       });
     } catch (e) {
       throw new Meteor.Error('update-user-account-w-stripe-sub', "Well that's unexpected. There was an error setting up your account.");
+    }
+  },
+  updateSubscriptionQuantity(organizationId) {
+    try {
+      let org;
+      let sub;
+      let quantity;
+      quantity = Meteor.users.find({organizationId: organizationId}).count();
+      if (quantity) {
+        org = Organization.findOne(organizationId);
+        if (org) {
+          sub = Subscriptions.find({'subscription.id': org.stripeSubscriptionId}).fetch();
+          if (sub) {
+            console.log('sub = ', sub);
+            console.log('!!!', sub[0].subscription.items.data[0].id);
+            console.log('quantity = ', org.users.length);
+            stripe.subscriptionItems.update(sub[0].subscription.items.data[0].id, {
+              quantity: quantity //org.users.length
+            },
+            function(error,subItem) {
+              if (error) {
+                console.log('error', error);
+              } else {
+                console.log(subItem)
+              }
+            })
+          }
+        }
+      }
+    } catch (e) {
+      throw new Meteor.Error('update-quantity-error', e);
     }
   }
 });

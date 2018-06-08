@@ -9,11 +9,12 @@ Template.team_options.helpers({
     let user;
     user = Meteor.user();
     if (user) {
-      let org;
-      org = Organizations.findOne(user.organizationId);
-      if (org) {
-        return org.users.length;
-      }
+      return Meteor.users.find({ organizationId: user.organizationId }).count();
+      // let org;
+      // org = Organizations.findOne(user.organizationId);
+      // if (org) {
+      //   return org.users.length;
+      // }
     }
   },
   getPluralIfNeeded() {
