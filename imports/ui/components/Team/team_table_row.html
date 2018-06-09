@@ -3,25 +3,38 @@
   <tr>
     <td>{{profile.name.first}} {{profile.name.last}}</td>
     <td>
+      {{#if isOwner _id}}
+        <span class="badge badge-pill badge-{{getUserRoleBadge _id}}">{{getUserRoleBadge _id}}</span>
+      {{else}}
       <div class="dropdown">
         <button class="btn btn-link dropdown-toggle badge-{{getUserRoleBadge _id}} badge-wrapper" data-toggle="dropdown">
           <span class="badge badge-pill badge-{{getUserRoleBadge _id}}">{{getUserRoleBadge _id}}</span>
         </button>
         <div class="dropdown-menu page-shadow">
-          <a href="#" class="dropdown-item">
-            <div class="text-gray"><i class="fas fa-user-shield"></i> Make Admin</div>
-          </a>
+          <div class="dropdown-item be-pointer">
+            {{#if isAdmin _id}}
+            <div class="text-gray" id="removeAdmin" data-id="{{_id}}"><i class="fas fa-user-minus mr-1"></i> Remove Admin</div>
+            {{else}}
+            <div class="text-gray" id="makeAdmin" data-id="{{_id}}"><i class="fas fa-user-shield mr-1"></i> Make Admin</div>
+            {{/if}}
+          </div>
         </div>
       </div>
+      {{/if}}
+
       
     </td>
     <td>{{emails.[0].address}}</td>
     <td>
-      {{#if hasNotRegistered}}
+      {{#if isOwner _id}}
+
+      {{else}}
+      {{#if hasNotRegistered _id}}
       <button type="button" id="revokeInvite" class="btn btn-light btn-white btn-sm" data-id="{{_id}}">Revoke Invite</button>
       {{else}}
       <button type="button" class="btn btn-link text-gray--lighter" data-toggle="tooltip" data-placement="top" title="Edit User Permissions"><i class="fas fa-wrench"></i></button>
       <button type="button" class="btn btn-link text-gray--lighter" data-toggle="tooltip" data-placement="top" title="Delete Member"><i class="fas fa-user-times"></i></button>
+      {{/if}}
       {{/if}}
     </td>
   </tr>

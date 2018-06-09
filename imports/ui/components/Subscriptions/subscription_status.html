@@ -7,18 +7,18 @@
     </div>
     <div class="next-payment p-3 my-3 mx-2 border br-4 position-relative">
       <span class="box-title text-gray text-uppercase position-absolute">Renewal Date</span>
-      <span class="text-gray">Renews: 6/4/18</span>
+      <span class="text-gray">Renews: {{getSubscriptionRenewalDate}}</span>
     </div>
     <div class="next-payment p-3 my-3 mx-2 border br-4 position-relative">
       <span class="box-title text-gray text-uppercase position-absolute">Payment</span>
       <span class="text-gray">
-        <span class="payment-card">Visa</span>
-        <span class="payment-card-number">&mdash; 4242</span>
+        <span class="payment-card">{{getPaymentBrand}}</span>
+        <span class="payment-card-number">&mdash; {{getPaymentLast4}}</span>
       </span>
     </div>
     <div class="seats p-3 my-3 mx-2 border br-4 position-relative">
       <span class="box-title text-gray text-uppercase position-absolute">Members</span>
-      <span class="text-gray">Members: 1</span>
+      <span class="text-gray">Members: {{getCountOfTeam}}</span>
     </div>
     <div class="align-self-center flex-grow-1">
       <button type="button" class="float-right btn btn-light btn-white"><i class="far fa-credit-card"></i> Update Card</button>

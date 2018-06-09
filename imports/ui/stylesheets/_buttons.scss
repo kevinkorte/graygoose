@@ -36,6 +36,7 @@
 }
 .badge-wrapper {
     border: 1px solid transparent;
+    margin-left: -12px; //due to bootstrap's button padding, aligns the spans inside the button
     &:focus,
     &:active {
         border: 1px solid;
@@ -43,16 +44,20 @@
     }
 }
 .badge-owner.badge-wrapper {
-
     &:hover {
         text-decoration: none;
         color: hsl(8, 78%, 68%);
     }
 }
 .badge-member.badge-wrapper {
-
     &:hover {
         text-decoration: none;
         color: hsl(207, 16%, 45%);
+    }
+}
+.badge-admin.badge-wrapper {
+    &:hover {
+        text-decoration: none;
+        color: hsl(212, 98%, 65%);
     }
 }

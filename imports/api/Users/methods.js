@@ -44,5 +44,21 @@ Meteor.methods({
     } catch (e) {
       throw new Meteor.Error('revoke-user-error', "Error");
     }
+  },
+  makeUserAdmin(user) {
+    try {
+      Roles.addUsersToRoles(user._id, 'admin', user.organizationId);
+      Roles.removeUsersFromRoles(user._id, 'member', user.organizationId);
+    } catch (e) {
+      throw new Meteor.Error('make-user-admin-error', "Error");
+    }
+  },
+  removeUserAdmin(user) {
+    try {
+      Roles.addUsersToRoles(user._id, 'member', user.organizationId);
+      Roles.removeUsersFromRoles(user._id, 'admin', user.organizationId);
+    } catch (e) {
+      throw new Meteor.Error('remove-user-admin-error', "Error");
+    }
   }
 });

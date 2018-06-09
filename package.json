@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.0.0-beta.42",
+    "algoliasearch": "^3.27.1",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",
@@ -16,6 +17,7 @@
     "popper.js": "^1.14.3",
     "simpl-schema": "^1.5.0",
     "stripe": "^5.8.0",
+    "sweetalert": "^2.1.0",
     "zxcvbn": "^4.4.2"
   }
 }
