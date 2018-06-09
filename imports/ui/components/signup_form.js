@@ -92,6 +92,7 @@ Template.signup_form.onRendered(() => {
           // Inform the customer that there was an error.
           const errorElement = document.getElementById('card-errors');
           errorElement.textContent = error.message;
+          $('.spinner').removeClass('d-block')
         } else {
           // Send the token to your server.
           stripeTokenHandler(token);
@@ -172,6 +173,7 @@ Template.signup_form.onRendered(() => {
                                                   if (error) {
                                                     console.log(error);
                                                   } else {
+                                                    Meteor.call('sendVerificationEmail', userId);
                                                     FlowRouter.go("dashboard");
                                                   }
                                                 } )

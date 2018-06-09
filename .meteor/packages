@@ -38,3 +38,5 @@ aldeed:collection2@3.0.0
 arillo:flow-router-helpers
 zimme:active-route
 underscore
+email
+meteorhacks:ssr

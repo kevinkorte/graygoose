@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 import { Tracker } from 'meteor/tracker';
+import { Email } from 'meteor/email';
 
 import './nav_dashboard.html';
 
@@ -29,5 +30,16 @@ Template.nav_dashboard.helpers({
     } else {
       return "friend"
     }
+  }
+});
+
+Template.nav_dashboard.events({
+  'click #resendVerificationEmail'(event) {
+    console.log('click');
+    Meteor.call('sendTestEmail', (error) => {
+      if (error) {
+        console.log(error);
+      }
+    })
   }
 })
