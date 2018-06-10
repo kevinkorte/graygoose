@@ -1,10 +1,14 @@
 <template name="nav_dashboard">
+  {{#if emailUnverified}}
   <div class="verify-email-header text-white d-flex py-2 justify-content-center">
     <div class="verify-text my-auto">
       Hey <strong>Kevin</strong>, don't forget to verify your email soon.
     </div>
     <button id="resendVerificationEmail" class="btn btn-light ml-3">Resend Email</button>
   </div>
+  {{else}}
+  <hr class="top-border" />
+  {{/if}}
   <nav class="page-shadow navbar navbar-expand-md navbar-light bg-white mb-5">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

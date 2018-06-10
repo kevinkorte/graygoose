@@ -4,7 +4,7 @@
 .page-shadow {
   box-shadow: 0px 0px 20px 0px hsla(211, 14%, 62%, 0.32941176470588235);
 }
-.z-100 {
+.z-100 {                            
   z-index: 100;
 }
 .be-pointer {
@@ -12,4 +12,9 @@
 }
 .min-h-600 {
   min-height: 600px;
+}
+hr.top-border {
+  margin: 0;
+  height: 3px;
+  @extend .gradient;
 }

@@ -28,11 +28,13 @@
 }
 
 .btn-new {
+    position: relative;
     @extend .secondary-gradient;
     color: #fff;
     padding-left: 40px;
     padding-right: 40px;
     border-radius: 18px;
+    z-index: 0;
 }
 .badge-wrapper {
     border: 1px solid transparent;

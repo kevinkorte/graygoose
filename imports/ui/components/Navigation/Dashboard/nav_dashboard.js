@@ -30,6 +30,17 @@ Template.nav_dashboard.helpers({
     } else {
       return "friend"
     }
+  },
+  emailUnverified() {
+    let user;
+    user = Meteor.user();
+    if (user) {
+      if (user.emails[0].verified == false) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 });
 

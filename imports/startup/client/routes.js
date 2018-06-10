@@ -1,3 +1,5 @@
+import { Accounts } from 'meteor/accounts-base';
+
 import '../../ui/layouts/App_home.html';
 import "../../ui/pages/main.js";
 import '../../ui/pages/adminNav.js';
@@ -6,6 +8,17 @@ import '../../ui/pages/Team/team';
 import '../../ui/pages/Billing/billing';
 import '../../ui/pages/New/new';
 import '../../ui/pages/Single/single';
+
+Accounts.onEmailVerificationLink( function(token, done) {
+  Accounts.verifyEmail(token, (error) => {
+    if (error) {
+      console.log(error);
+    } else {
+      done();
+      FlowRouter.go('dashboard');
+    }
+  });
+});
 
 
 FlowRouter.route('/signup', {

@@ -4,7 +4,7 @@ Accounts.emailTemplates.from = 'hello@realtap.com';
 Accounts.emailTemplates.siteName = 'RealTap';
 Accounts.emailTemplates.verifyEmail = {
   subject(user) {
-    return 'Welcome ${user.profile.name.first}! Email verification for RealTap';
+    return `Welcome ${user.profile.name.first}! Email verification for RealTap`;
   },
   html(user, url) {
     SSR.compileTemplate('verificationHTML', Assets.getText('email_verification.html'));
