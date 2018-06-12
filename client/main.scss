@@ -1,2 +1,4 @@
 @import "{}/node_modules/bootstrap/scss/bootstrap";
+//TODO: Find a better way to bring in the flatpickr stylesheets
+@import "{}/imports/ui/stylesheets/flatpickr";
 @import "{}/imports/ui/stylesheets/import";
