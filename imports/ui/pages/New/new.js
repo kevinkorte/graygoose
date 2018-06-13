@@ -1,6 +1,7 @@
 import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 import flatpickr from "flatpickr";
+import Organizations from '../../../api/Organizations/Organizations';
 
 import './new.html';
 
@@ -47,5 +48,25 @@ Template.new.onRendered(() => {
       $('#lat').val(event.latLng.lat());
       $('#lng').val(event.latLng.lng());
     })
+  });
+  $(document).ready(function() {
+    $('#followers').select2({
+      placeholder: 'Select followers'
+    });
   })
+});
+
+Template.new.helpers({
+  getMyFollowers() {
+    let user;
+    user = Meteor.user();
+    if (user != undefined && user.organizationId) {
+      let org = Organizations.findOne(user.organizationId);
+      return org.users;
+    }
+  },
+  getFollower(id) {
+    let user = Meteor.users.findOne(id);
+    return user;
+  }
 })

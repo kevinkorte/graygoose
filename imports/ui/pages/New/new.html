@@ -59,10 +59,18 @@
                   <div class="followers">
                       <div class="row">
                         <div class="col-8">
-                            <select name="followers" id="followers" class="w-100">
-                                <option>Select Followers</option>
-                                <option value="1">Kevin</option>
-                              </select>
+                          <select name="followers" id="followers" class="w-100" multiple="multiple">
+                            <option></option>
+                            {{#each getMyFollowers}}
+                            {{#with getFollower this}}
+                            <option value="{{_id}}">{{profile.name.first}}</option>
+                            {{/with}}
+                            {{/each}}
+                          </select>
+                            
+                                
+                                
+                              
                         </div>
                         <div class="col-4">
                             <button type="button" class="float-right btn btn-light btn-white"> <i class="fas fa-user-plus"></i> New Follower</button>
