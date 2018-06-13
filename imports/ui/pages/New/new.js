@@ -26,6 +26,26 @@ Template.new.onRendered(() => {
   autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
+    $('#placeName').val(place.name);
+    $('#formattedAddress').val(place.formatted_address);
+    $('#formattedPhoneNumber').val(place.formatted_phone_number);
+    $('#website').val(place.website);
+    $('#lat').val(place.geometry.location.lat());
+    $('#lng').val(place.geometry.location.lng());
     console.log(place);
+    let map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 17
+    });
+    map.setCenter(place.geometry.location);
+    let marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location,
+      draggable: true,
+      animation: google.maps.Animation.DROP
+    });
+    marker.addListener('dragend', (event) => {
+      $('#lat').val(event.latLng.lat());
+      $('#lng').val(event.latLng.lng());
+    })
   })
 })

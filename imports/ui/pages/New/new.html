@@ -40,12 +40,15 @@
         <div class="col-9">
             <div class="form-group">
               <label for="address" class="form-label-gray">Address</label>
-              <input type="text" class="form-control" id="address">
+              <input type="text" name="address" class="form-control" id="address">
+              <input type="hidden" name="placeName" id="placeName">
+              <input type="hidden" name="formattedAddress" id="formattedAddress">
+              <input type="hidden" name="formattedPhoneNumber" id="formattedPhoneNumber">
+              <input type="hidden" name="website" id="website">
+              <input type="hidden" name="lat" id="lat">
+              <input type="hidden" name="lng" id="lng">
             </div>
-            <div id="map" class="mb-5">
-              <img class="" src="https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=640x350&maptype=roadmap
-              &markers=color:red%7C40.718217,-73.998284
-              &key=AIzaSyApmcx3wYJTdoVMjbWtpf3QWu17FnsUodU" alt="Map">
+            <div id="map" class="map mb-5">
             </div>
             </div>
             <div class="col-3 mb-5">
