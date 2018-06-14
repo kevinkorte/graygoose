@@ -61,7 +61,7 @@ Template.new.onRendered(() => {
     $('#followers').select2({
       placeholder: 'Select followers'
     });
-  })
+  });
 });
 
 Template.new.helpers({
@@ -91,5 +91,16 @@ Template.new.helpers({
   },
   getTestFollower() {
     return Followers.find({});
+  }
+});
+
+Template.new.events({
+  'click #showing-btn'(event) {
+    $('#open-house-btn').removeClass('active');
+    $('.hide-on-open-house').removeClass('d-none');
+  },
+  'click #open-house-btn'(event) {
+    $('#showing-btn').removeClass('active');
+    $('.hide-on-open-house').addClass('d-none');
   }
 })

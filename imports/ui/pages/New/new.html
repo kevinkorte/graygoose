@@ -12,8 +12,8 @@
         </div>
         <div class="col-9 mb-5">
             <div class="btn-group btn-group-lg" role="group" aria-label="">
-                <button type="button" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-users"></i> Meeting People</button>
-                <button type="button" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-home"></i> Open Showing</button>
+                <button type="button" id="showing-btn" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-users"></i> Meeting People</button>
+                <button type="button" id="open-house-btn" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-home"></i> Open Showing</button>
             </div>
         </div>
         <div class="col-3 pt-24px">
@@ -72,10 +72,10 @@
         
                     </div>
               </div>
-              <div class="col-3">
+              <div class="col-3 hide-on-open-house">
                 <small class="text-gray">Add any supplemental information about who you are visiting that you'd like.</small>
               </div>
-              <div class="col-9">
+              <div class="col-9 hide-on-open-house">
                 <div class="form-group row">
                   <label for="personOne" class="col-3 col-form-label form-label-gray">Person One</label>
                   <div class="col-9">
