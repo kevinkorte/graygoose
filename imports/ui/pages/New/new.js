@@ -4,6 +4,7 @@ import flatpickr from "flatpickr";
 import Organizations from '../../../api/Organizations/Organizations';
 
 import './new.html';
+import '../../components/Follower/newFollower.js';
 
 Template.new.onRendered(() => {
   let startDate = $('#start').flatpickr({

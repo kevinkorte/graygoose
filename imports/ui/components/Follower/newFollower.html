@@ -1,0 +1,23 @@
+<template name="newFollower">
+  <form id="addNewFollower">
+    <div class="form-group">
+      <label for="followerName">Name</label>
+      <input type="text" name="followerName" class="form-control" id="followerName" placeholder="Follower Name">
+    </div>
+    <div class="form-group">
+      <label for="followerPhone">Phone Number</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1"><img style="width: 25px" src="/us.svg" alt="USA Flag"></span>
+        </div>
+        <input type="tel" name="followerPhone" class="form-control" id="followerPhone" placeholder="Telephone Numbers">
+      </div>
+      <small id="numberHelp" class="form-text text-muted">Currently, only US numbers are supported</small>
+    </div>
+    <div class="form-group">
+      <label for="followerEmail">Email Address</label>
+      <input type="email" name="followerEmail" class="form-control" id="followerEmail" aria-describedby="emailHelp" placeholder="Email Address">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</template>
