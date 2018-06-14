@@ -2,11 +2,19 @@ import { Template } from 'meteor/templating';
 import { Session } from 'meteor/session';
 import flatpickr from "flatpickr";
 import Organizations from '../../../api/Organizations/Organizations';
+import Followers from '../../../api/Followers/Followers';
 
 import './new.html';
 import '../../components/Follower/newFollower.js';
 
+Template.new.onCreated(() => {
+  Tracker.autorun(() => {
+    Meteor.subscribe('followers');
+  })
+})
+
 Template.new.onRendered(() => {
+  console.log(Followers.findOne());
   let startDate = $('#start').flatpickr({
     minDate: 'today',
     altInput: true,

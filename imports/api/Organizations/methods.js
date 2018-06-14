@@ -1,6 +1,4 @@
-import {
-  Meteor
-} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import Organizations from './Organizations';
 
 Meteor.methods({

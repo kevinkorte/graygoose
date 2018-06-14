@@ -5,6 +5,10 @@ import 'jquery-mask-plugin';
 import 'jquery-validation/dist/additional-methods.js';
 import './newFollower.html';
 
+Template.newFollower.onCreated(() => {
+
+})
+
 Template.newFollower.onRendered(() => {
   $('#followerPhone').mask('(000) 000 - 0000', {
     placeholder: "(   )   -    "
@@ -22,9 +26,21 @@ Template.newFollower.onRendered(() => {
         email: true
       }
     },
+    errorClass: 'is-invalid',
+    validClass: 'is-valid',
     submitHandler: function(form) {
-      console.log(form);
       event.preventDefault();
+      const name = $('#followerName').val();
+      const phone = $('#followerPhone').val();
+      const email = $('#followerEmail').val();
+      console.log(name, phone, email);
+      Meteor.call('addNewFollower', name, phone, email, (error) => {
+        if (error) {
+          console.log(error);
+        } else {
+          //Close the modal here
+        }
+      })
     }
   })
 
