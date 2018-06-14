@@ -14,7 +14,6 @@ Template.new.onCreated(() => {
 })
 
 Template.new.onRendered(() => {
-  console.log(Followers.findOne());
   let startDate = $('#start').flatpickr({
     minDate: 'today',
     altInput: true,
@@ -70,12 +69,27 @@ Template.new.helpers({
     let user;
     user = Meteor.user();
     if (user != undefined && user.organizationId) {
+      let followersArray = [];
       let org = Organizations.findOne(user.organizationId);
-      return org.users;
+      let colleagueArray = org.users;
+      // let array = [{"_id": "123", "name": "Kevin"}];
+      let array = [];
+      colleagueArray.forEach((colleague) => {
+        let user = Meteor.users.findOne(colleague);
+        array.push({"_id": user._id, "name": user.profile.name.first});
+      });
+      let followers = Followers.find({});
+      followers.forEach((follower) => {
+        array.push({"_id": follower._id, "name": follower.name});
+      })
+      return array;
     }
   },
   getFollower(id) {
     let user = Meteor.users.findOne(id);
     return user;
+  },
+  getTestFollower() {
+    return Followers.find({});
   }
 })
