@@ -12,4 +12,6 @@ import '../../api/Users/methods';
 
 import '../../api/Payments/methods';
 
+import '../../api/Showings/methods';
+
 import '../../api/Organizations/methods';
