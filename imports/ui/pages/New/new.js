@@ -41,7 +41,6 @@ Template.new.onRendered(() => {
     $('#website').val(place.website);
     $('#lat').val(place.geometry.location.lat());
     $('#lng').val(place.geometry.location.lng());
-    console.log(place);
     let map = new google.maps.Map(document.getElementById('map'), {
       zoom: 17
     });
@@ -62,6 +61,42 @@ Template.new.onRendered(() => {
       placeholder: 'Select followers'
     });
   });
+
+  $('#newShowing').validate({
+    rules: {
+      start: {
+        required: true
+      },
+      end: {
+        required: true
+      },
+      address: {
+        required: true
+      }
+    },
+    errorClass: 'is-invalid',
+    validClass: 'is-valid',
+    submitHandler: function(form) {
+      event.preventDefault();
+      const category = $('#category').val();
+      const start = $('#start').val();
+      const end = $('#end').val();
+      const address = $('#address').val();
+      const placeName = $('#placeName').val();
+      const formattedAddress = $('#formattedAddress').val();
+      const formattedPhoneNumber = $('#formattedPhoneNumber').val();
+      const website = $('#website').val();
+      const lat = $('#lat').val();
+      const lng = $('#lng').val();
+      const followers = $('#followers').val();
+      const personOne = $('#personOne').val();
+      const personTwo = $('#personTwo').val();
+      const theirAddress = $('#theirAddress').val();
+      
+
+    }
+  });
+
 });
 
 Template.new.helpers({
@@ -98,9 +133,11 @@ Template.new.events({
   'click #showing-btn'(event) {
     $('#open-house-btn').removeClass('active');
     $('.hide-on-open-house').removeClass('d-none');
+    $('#category').val('showing');
   },
   'click #open-house-btn'(event) {
     $('#showing-btn').removeClass('active');
     $('.hide-on-open-house').addClass('d-none');
-  }
+    $('#category').val('open house');
+  },
 })

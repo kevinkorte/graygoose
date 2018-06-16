@@ -1,6 +1,7 @@
 <template name="new">
   {{> nav_dashboard }}
   <div class="container bg-white br-10 new-container py-4 my-4">
+    <form id="newShowing">
     <div class="row">
         <div class="col-3"></div>
         <div class="col-9">
@@ -15,6 +16,7 @@
                 <button type="button" id="showing-btn" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-users"></i> Meeting People</button>
                 <button type="button" id="open-house-btn" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-home"></i> Open Showing</button>
             </div>
+            <input type="hidden" name="category" id="category">
         </div>
         <div class="col-3 pt-24px">
           <small class="text-gray">Select the starting and ending day and time. You can always change these later.</small>
@@ -23,11 +25,11 @@
           <div class="form-group row mb-5">
               <div class="col-6">
                 <label for="start" class="form-label-gray">Start</label>
-                <input type="text" name="start" class="form-control bg-white" id="start" placeholder="Start">
+                <input type="text" name="start" class="required start form-control bg-white" id="start" placeholder="Start">
               </div>
               <div class="col-6">
                 <label for="end" class="form-label-gray">End</label>
-                <input type="text" name="end" class="form-control bg-white" id="end" placeholder="End">
+                <input type="text" name="end" class="required end form-control bg-white" id="end" placeholder="End">
               </div>
             </div>
         </div>
@@ -105,7 +107,7 @@
             
 
       </div>
-
+    </form>
   </div>
 
 
