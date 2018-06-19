@@ -78,21 +78,41 @@ Template.new.onRendered(() => {
     validClass: 'is-valid',
     submitHandler: function(form) {
       event.preventDefault();
+      let showing = {};
       const category = $('#category').val();
-      const start = $('#start').val();
+      showing.category = category;
+      const start = new Date($('#start').val());
+      showing.start = start;
       const end = $('#end').val();
+      showing.end = end;
       const address = $('#address').val();
+      showing.address = address;
       const placeName = $('#placeName').val();
+      showing.placeName = placeName;
       const formattedAddress = $('#formattedAddress').val();
+      showing.formattedAddress = formattedAddress;
       const formattedPhoneNumber = $('#formattedPhoneNumber').val();
+      showing.formattedPhoneNumber = formattedPhoneNumber;
       const website = $('#website').val();
+      showing.website = website;
       const lat = $('#lat').val();
+      showing.lat = lat;
       const lng = $('#lng').val();
+      showing.lng = lng;
       const followers = $('#followers').val();
+      showing.followers = followers;
       const personOne = $('#personOne').val();
+      showing.personOne = personOne;
       const personTwo = $('#personTwo').val();
+      showing.personTwo = personTwo;
       const theirAddress = $('#theirAddress').val();
-      
+      showing.theirAddress = theirAddress;
+      console.log(showing);
+      Meteor.call('createNewShowing', showing, (error) => {
+        if (error) {
+          console.log(error);
+        }
+      })
 
     }
   });

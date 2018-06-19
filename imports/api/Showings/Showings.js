@@ -10,10 +10,10 @@ Schemas.Showings = new SimpleSchema({
     type: String,
   },
   start: {
-    type: String
+    type: Date
   },
   end: {
-    type: String
+    type: Date
   },
   address: {
     type: String
@@ -61,7 +61,7 @@ Schemas.Showings = new SimpleSchema({
   "followers.$.email": {
     type: String,
     optional: true
-  }
+  },
 });
 
 export default Showings;
