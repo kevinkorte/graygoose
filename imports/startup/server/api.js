@@ -8,4 +8,6 @@ import '../../api/Subscriptions/server/publications';
 
 import '../../api/Payments/server/publications';
 
+import '../../api/Showings/server/publications';
+
 import '../../api/Users/server/publications';

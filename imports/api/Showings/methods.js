@@ -15,6 +15,8 @@ Meteor.methods({
       website: showing.website,
       lat: showing.lat,
       lng: showing.lng,
+    }, (err, res) => {
+      console.log(err, res);
     })
   }
 })
