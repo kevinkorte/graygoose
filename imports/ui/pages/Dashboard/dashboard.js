@@ -16,11 +16,12 @@ Template.dashboard.onRendered(() => {
 
 Template.dashboard.helpers({
   hasNoShowing() {
-    let showing = Showings.find({});
-    if (showing > 0) {
-      return true;
-    } else {
+    let showing = 0;
+    showing = Showings.find({});
+    if (showing.count() > 0) {
       return false;
+    } else {
+      return true;
     }
   },
   showings() {

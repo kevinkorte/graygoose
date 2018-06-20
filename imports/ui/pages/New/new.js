@@ -42,13 +42,14 @@ Template.new.onRendered(() => {
     $('#website').val(place.website);
     $('#lat').val(place.geometry.location.lat());
     $('#lng').val(place.geometry.location.lng());
-
+console.log(location);
+console.log(place.place_id);
 
     location.geocode({
-      address: '1600 Amphitheatre Parkway, Mountain View, CA'
+      address: place.formatted_address
     }, function(err, response) {
       if (err) {
-        console.log(err);
+        console.log('error', err);
       }
       if (!err) {
         console.log(response.json.results);
@@ -98,7 +99,7 @@ Template.new.onRendered(() => {
       showing.category = category;
       const start = new Date($('#start').val());
       showing.start = start;
-      const end = $('#end').val();
+      const end = new Date($('#end').val());
       showing.end = end;
       const address = $('#address').val();
       showing.address = address;
