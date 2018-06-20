@@ -33,6 +33,7 @@ Template.new.onRendered(() => {
   });
   let input = document.getElementById('address');
   autocomplete = new google.maps.places.Autocomplete(input);
+  let location = new google.maps.Geocoder();
   autocomplete.addListener('place_changed', () => {
     let place = autocomplete.getPlace();
     $('#placeName').val(place.name);
@@ -41,6 +42,20 @@ Template.new.onRendered(() => {
     $('#website').val(place.website);
     $('#lat').val(place.geometry.location.lat());
     $('#lng').val(place.geometry.location.lng());
+
+
+    location.geocode({
+      address: '1600 Amphitheatre Parkway, Mountain View, CA'
+    }, function(err, response) {
+      if (err) {
+        console.log(err);
+      }
+      if (!err) {
+        console.log(response.json.results);
+      }
+    });
+
+
     let map = new google.maps.Map(document.getElementById('map'), {
       zoom: 17
     });

@@ -15,6 +15,14 @@ Template.dashboard.onRendered(() => {
 });
 
 Template.dashboard.helpers({
+  hasNoShowing() {
+    let showing = Showings.find({});
+    if (showing > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  },
   showings() {
     return Showings.find({});
   }

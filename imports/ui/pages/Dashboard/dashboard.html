@@ -1,5 +1,6 @@
 <template name="dashboard">
   {{> nav_dashboard }}
+  {{#if hasNoShowing}}
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="card mx-3 flex-fill icon-background">
@@ -20,11 +21,14 @@
       </div>
     </div>
   </div>
+  {{/if}}
   <div class="container-fluid">
-    <div class="row justify-content-center">
-    {{#each showings}}
-      {{> card this}}
-    {{/each}}
+    <div class="row mx-4">
+      <div class="card-deck justify-content-center">
+          {{#each showings}}
+          {{> card this}}
+        {{/each}}
+      </div>
     </div>
   </div>
   

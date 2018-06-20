@@ -1,16 +1,37 @@
 <template name="card">
-  {{#with this}}
-  <a href="#" class="card-anchor m-3 page-shadow br-10" style="width: 29%;">
-    <div class="card br-10">
-      <img src="https://maps.googleapis.com/maps/api/staticmap?center={{lat}},{{lng}}&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C{{lat}},{{lng}}&key=AIzaSyApmcx3wYJTdoVMjbWtpf3QWu17FnsUodU" alt="" class="card-img-top">
-      <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted"><small class="text-uppercase">{{category}}</small></h6>
-        <h5 class="card-title mb-3">{{placeName}}</h5>
+      {{#with this}}
+      <div class="p-3" style="max-width: 340px">
+        <a href="#" class="card-anchor page-shadow br-10 d-block">
+          <div class="card m-0 br-10">
+            <img src="https://maps.googleapis.com/maps/api/staticmap?center={{lat}},{{lng}}&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C{{lat}},{{lng}}&key=AIzaSyApmcx3wYJTdoVMjbWtpf3QWu17FnsUodU" alt="" class="card-img-top">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-2 text-muted"><small class="text-uppercase">{{category}}</small></h6>
+              <h5 class="card-title mb-3">{{placeName}}</h5>
+              <div class="card-text d-flex mb-3">
+                <div class="avatar mr-2"><i class="fas fa-user"></i></div>
+                <div class="username text-gray">Kevin</div>
+              </div>
+              <div class="card-text d-flex justify-content-between text-gray">
+                <div class="start flex-grow-1">
+                  <div class="date">6/3/18</div>
+                  <div class="time">1:00PM</div>
+                </div>
+                <i class="fas fa-long-arrow-alt-right fa-2x align-self-center mx-2"></i>
+                <div class="end flex-grow-1">
+                  <div class="date">6/3/18</div>
+                  <div class="time">4:00PM</div>
+                </div>
+              </div>
+          </div>
+          </div>
+        </a>
+    
       </div>
-    </div>
-  </a>
+    
+    
+    
+      {{/with}}
 
-  {{/with}}
   <!-- <a href="#" class="card-anchor m-3 page-shadow br-10" style="width: 29%;">
   <div class="card br-10 expired-card">
     <img class="card-img-top" src="https://maps.googleapis.com/maps/api/staticmap?center=47.716978,-122.318996&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C" alt="Card image cap">
