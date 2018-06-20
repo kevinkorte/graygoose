@@ -15,5 +15,12 @@ Template.card.helpers({
     let timestamp = moment(date);
     let timezone = moment.tz.guess();
     return timestamp.tz(timezone).format('h:mm a');
+  },
+  userName(userId) {
+    let user;
+    user = Meteor.users.findOne(userId);
+    if (user) {
+      return user.profile.name.first;
+    }
   }
 })

@@ -21,6 +21,7 @@ Schemas.Followers = new SimpleSchema({
   belongsTo: {
     type: String,
     autoValue: function() {
+      console.log('called autovalue');
       if (this.isInsert) {
         return Meteor.userId();
       }

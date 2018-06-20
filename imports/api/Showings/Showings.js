@@ -1,3 +1,4 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from "meteor/mongo";
 import SimpleSchema from 'simpl-schema';
 
@@ -6,6 +7,15 @@ const Showings = new Mongo.Collection("showings");
 const Schemas = {};
 
 Schemas.Showings = new SimpleSchema({
+  userId: {
+    type: String,
+    autoValue: function() {
+      console.log(this);
+      if (this.isInsert) {
+        return Meteor.userId();
+      }
+    }
+  },
   category: {
     type: String,
   },
