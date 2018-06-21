@@ -5,6 +5,7 @@ import Followers from '../Followers/Followers';
 Meteor.methods({
   createNewShowing(showing) {
     Showings.insert({
+      userId: Meteor.userId(),
       category: showing.category,
       start: showing.start,
       end: showing.end,

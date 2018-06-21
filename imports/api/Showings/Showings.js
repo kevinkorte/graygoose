@@ -7,14 +7,8 @@ const Showings = new Mongo.Collection("showings");
 const Schemas = {};
 
 Schemas.Showings = new SimpleSchema({
-  userId: {
+  userId : {
     type: String,
-    autoValue: function() {
-      console.log(this);
-      if (this.isInsert) {
-        return Meteor.userId();
-      }
-    }
   },
   category: {
     type: String,

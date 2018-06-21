@@ -92,7 +92,7 @@ FlowRouter.route('/new', {
   }
 });
 
-FlowRouter.route('/user/id', {
+FlowRouter.route('/:user/:id', {
   name: 'single',
   action: function () {
     BlazeLayout.render("App.home", {

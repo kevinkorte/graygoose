@@ -31,6 +31,38 @@ Template.new.onRendered(() => {
       startDate.set('maxDate', Date.parse(selectedDates[0]));
     }
   });
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+  let markers = [];
+  let map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 17
+  });
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition( (position) => {
+      let pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      map.setCenter(pos);
+      let marker = new google.maps.Marker({
+        map: map,
+        position: pos,
+        draggable: true,
+        animation: google.maps.Animation.DROP
+      });
+      markers.push(marker);
+      marker.addListener('dragend', (event) => {
+        $('#lat').val(event.latLng.lat());
+        $('#lng').val(event.latLng.lng());
+      })
+      console.log('pos', pos);
+      $('#lat').val(pos.lat);
+      $('#lng').val(pos.lng);
+    })
+  }
   let input = document.getElementById('address');
   autocomplete = new google.maps.places.Autocomplete(input);
   let location = new google.maps.Geocoder();
@@ -42,8 +74,6 @@ Template.new.onRendered(() => {
     $('#website').val(place.website);
     $('#lat').val(place.geometry.location.lat());
     $('#lng').val(place.geometry.location.lng());
-console.log(location);
-console.log(place.place_id);
 
     location.geocode({
       address: place.formatted_address
@@ -55,12 +85,9 @@ console.log(place.place_id);
         console.log(response.json.results);
       }
     });
-
-
-    let map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 17
-    });
     map.setCenter(place.geometry.location);
+    setMapOnAll(null);
+    markers = [];
     let marker = new google.maps.Marker({
       map: map,
       position: place.geometry.location,
