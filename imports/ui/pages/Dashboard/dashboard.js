@@ -7,12 +7,17 @@ import './dashboard.html';
 import '../../components/Navigation/Dashboard/nav_dashboard';
 import '../../components/Dashboard/card';
 
-Template.dashboard.onRendered(() => {
-  Tracker.autorun(() => {
-    Meteor.subscribe('this.user');
-    Meteor.subscribe('allShowings');
+Template.dashboard.onCreated( function() {
+  this.autorun(() => {
+    this.subscribe('this.user');
+    this.subscribe('allShowings');
   })
 });
+
+Template.dashboard.onRendered(() => {
+
+});
+
 
 Template.dashboard.helpers({
   hasNoShowing() {

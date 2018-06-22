@@ -2,7 +2,9 @@
   {{> nav_dashboard }}
   {{#with showing}}
   
-  <div class="map mb-3" id="map"></div>
+  <div class="map mb-3" id="map">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-12">
