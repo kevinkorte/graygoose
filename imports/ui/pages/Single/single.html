@@ -1,5 +1,7 @@
 <template name="single">
   {{> nav_dashboard }}
+  {{#with showing}}
+  
   <div class="map mb-3" id="map"></div>
   <div class="container">
     <div class="row">
@@ -7,18 +9,19 @@
         <div class="d-flex my-3 py-2 justify-content-between align-items-center border-top border-bottom">
           <div>
               <div class="d-inline-block avatar mr-2"><i class="fas fa-user"></i></div>
-              <div class="d-inline-block username text-gray">Kevin</div>
+              <div class="d-inline-block username text-gray">{{userName userId}}</div>
           </div>
           <div>
+              <button class="btn btn-warning">Edit</button>
               <div class="btn-group" role="group" aria-label="">
                   <button type="button" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-users"></i> Check In</button>
                   <button type="button" class="float-right btn btn-light btn-white" data-toggle="button" aria-pressed="false" autocomplete="off"> <i class="fas fa-home"></i> Start Showing</button>
               </div>
           </div>
           </div>
-        <div class="address-street font-weight-bold h3 mt-3 mb-0 text-success">15032 Densmore Ave N <small class="text-uppercase text-gray h6 font-weight-light">Open House</small></div>
-        <div class="address text-muted">Shoreline, WA 98133</div>
-        <div class="address-gps text-muted font-weight-light"><small>(47.738783, -122.338176)</small></div>
+        <div class="address-street font-weight-bold h3 mt-3 mb-0 text-success">{{placeName}} <small class="text-uppercase text-gray h6 font-weight-light">{{category}}</small></div>
+        <div class="address text-muted">{{formattedAddress}}</div>
+        <div class="address-gps text-muted font-weight-light"><small>({{lat}}, {{lng}})</small></div>
       </div>
     </div>
     <div class="row bg-light br-10 mt-3">
@@ -50,4 +53,5 @@
 
     </div>
   </div>
+  {{/with}}
 </template>

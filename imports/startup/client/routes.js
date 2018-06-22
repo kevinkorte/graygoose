@@ -9,17 +9,6 @@ import '../../ui/pages/Billing/billing';
 import '../../ui/pages/New/new';
 import '../../ui/pages/Single/single';
 
-Accounts.onEmailVerificationLink( function(token, done) {
-  Accounts.verifyEmail(token, (error) => {
-    if (error) {
-      console.log(error);
-    } else {
-      done();
-      FlowRouter.go('dashboard');
-    }
-  });
-});
-
 
 FlowRouter.route('/signup', {
   triggersEnter: function (context, params) {
@@ -92,7 +81,7 @@ FlowRouter.route('/new', {
   }
 });
 
-FlowRouter.route('/:user/:id', {
+FlowRouter.route('/:user/:_id', {
   name: 'single',
   action: function () {
     BlazeLayout.render("App.home", {
@@ -100,3 +89,14 @@ FlowRouter.route('/:user/:id', {
     });
   }
 })
+
+Accounts.onEmailVerificationLink( function(token, done) {
+  Accounts.verifyEmail(token, (error) => {
+    if (error) {
+      console.log(error);
+    } else {
+      done();
+      FlowRouter.go('dashboard');
+    }
+  });
+});

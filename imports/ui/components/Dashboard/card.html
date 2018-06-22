@@ -1,7 +1,7 @@
 <template name="card">
       {{#with this}}
       <div class="p-3" style="max-width: 340px">
-        <a href="{{pathFor 'single' user=userId id=_id}}" class="card-anchor page-shadow br-10 d-block">
+        <a href="{{pathFor 'single' user=userId _id=_id}}" class="card-anchor page-shadow br-10 d-block">
           <div class="card m-0 br-10">
             <img src="https://maps.googleapis.com/maps/api/staticmap?center={{lat}},{{lng}}&zoom=14&size=290x160&scale=2&maptype=roadmap&markers=size:mid%7Ccolor:red%7C{{lat}},{{lng}}&key=AIzaSyApmcx3wYJTdoVMjbWtpf3QWu17FnsUodU" alt="" class="card-img-top">
             <div class="card-body">
