@@ -7,13 +7,24 @@ import Subscriptions from '../../../api/Subscriptions/Subscriptions';
 import Organization from '../../../api/Organizations/Organizations';
 import Cards from '../../../api/Cards/Cards';
 
-Template.subscription_status.onRendered(() => {
-    Tracker.autorun(() => {
-      Meteor.subscribe('user.subscription');
-      Meteor.subscribe('org.users', {orgId: Meteor.user().organizationId});
+Template.subscription_status.onCreated( function() {
+  let user;
+  user = Meteor.users.findOne(Meteor.userId());
+  if (typeof user != undefined) {
+    console.log("USER", user);
+    console.log("TYPE OF", typeof user);
+    console.log('ORG ID =======', Meteor.user());
+    this.autorun(() => {
+      this.subscribe('this.subscription');
+      this.subscribe('org.users', {});
     })
+  }
   
 });
+
+Template.subscription_status.onRendered( function() {
+  console.log('Org Id', Meteor.user());
+})
 
 Template.subscription_status.helpers({
   getSubscriptionStatus() {
@@ -34,7 +45,6 @@ Template.subscription_status.helpers({
     }
   },
   getSubscriptionRenewalDate() {
-    console.log(moment);
     let user;
     user = Meteor.user();
     if (user) {
