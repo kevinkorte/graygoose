@@ -6,6 +6,7 @@ import {
 } from 'meteor/check';
 import Cards from '../Cards';
 
-Meteor.publish('user.card', () => {
+Meteor.publish('user.card', (orgId) => {
+  console.log('return card');
   return Cards.find({});
 })

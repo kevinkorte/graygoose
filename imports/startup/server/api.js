@@ -1,3 +1,5 @@
+import '../../api/Cards/server/publications';
+
 import '../../api/Customers/server/publications';
 
 import '../../api/Followers/server/publications';
