@@ -8,10 +8,9 @@ import {
 import './payments_source.html';
 import Cards from '../../../api/Cards/Cards';
 
-const stripe = Stripe(Meteor.settings.public.stripe_test_pk);
-const elements = stripe.elements();
-
 Template.payments_source.onRendered(() => {
+  const stripe = Stripe(Meteor.settings.public.stripe_test_pk);
+  const elements = stripe.elements();
   const style = {
     base: {
       // Add your base input styles here. For example:
