@@ -58,19 +58,6 @@ Template.payments_source.onRendered(() => {
           $('#modal-body').removeClass('modal-waiting');
         }
       });
-    // form.submit(function(event) {
-    //   event.preventDefault();
-    //   let target = event.target;
-    //   let token = target.stripeToken.value;
-    //   Meteor.call('updateSource', token, function(error, response) {
-    //     if ( error ) {
-    //       console.log(error.reason);
-    //     } else {
-    //       $('#payment-modal').modal('hide');
-    //       $('#modal-body').removeClass('modal-waiting');
-    //     }
-    //   });
-    // });
   }
 
   $('#payment-modal').on('show.bs.modal', function (e) {
