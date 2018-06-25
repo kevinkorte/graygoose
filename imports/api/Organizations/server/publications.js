@@ -4,7 +4,7 @@ import Organizations from '../Organizations';
 
 Meteor.publish('org', (org) => {
   // check(orgId, String);
-    return Organizations.find({_id: org.orgId});
+    return Organizations.find({_id: org});
 
 });
 
