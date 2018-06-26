@@ -52,5 +52,14 @@ Template.nav_dashboard.events({
         console.log(error);
       }
     })
+  },
+  'click .logout'(event) {
+    Meteor.logout((error) => {
+      if (error) {
+        console.log(error);
+      } else {
+        FlowRouter.go('login');
+      }
+    })
   }
 })

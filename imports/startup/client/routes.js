@@ -23,6 +23,13 @@ FlowRouter.route('/signup', {
   }
 });
 
+FlowRouter.route('/login', {
+  name: 'login',
+  action: function() {
+    console.log('login');
+  }
+})
+
 FlowRouter.route('/dashboard', {
   name: "dashboard",
   triggersEnter: function (context, params) {
@@ -88,7 +95,7 @@ FlowRouter.route('/:user/:_id', {
       template: "single"
     });
   }
-})
+});
 
 Accounts.onEmailVerificationLink( function(token, done) {
   Accounts.verifyEmail(token, (error) => {
