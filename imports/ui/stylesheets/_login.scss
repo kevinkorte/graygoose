@@ -1,0 +1,25 @@
+html.login,
+body.login,
+body.login > #__blaze-root,
+.login-wrapper {
+  height: 100%;
+}
+
+.login-wrapper {
+  background: url('img/cityOverhead.jpg') -25px -50px;
+  // background-size: cover;
+  // background-position: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  height: 100%;
+  background-size: calc(100% + 50px);
+}
+ .card {
+   width: 480px;
+   border: 0;
+   border-bottom-left-radius: 10px;
+   border-bottom-right-radius: 10px;
+   
+ }

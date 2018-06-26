@@ -5,9 +5,7 @@
 .br-4 {
     border-radius: 4px;
 }
-
-.top-border-gradient {
-    width: 100%;
-    height: 4px;
-    @extend .gradient;
+.top-border.login-edit {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }

@@ -8,6 +8,7 @@ import '../../ui/pages/Team/team';
 import '../../ui/pages/Billing/billing';
 import '../../ui/pages/New/new';
 import '../../ui/pages/Single/single';
+import '../../ui/pages/login';
 
 
 FlowRouter.route('/signup', {
@@ -24,9 +25,17 @@ FlowRouter.route('/signup', {
 });
 
 FlowRouter.route('/login', {
+  triggersEnter: function (context, params) {
+    $('body').addClass('login');
+    $('html').addClass('login');
+  },
+  triggersExit: function (context, params) {
+    $('body').removeClass('login');
+    $('html').removeClass('login');
+  },
   name: 'login',
   action: function() {
-    console.log('login');
+    BlazeLayout.render('login');
   }
 })
 
