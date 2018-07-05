@@ -9,6 +9,7 @@ import '../../ui/pages/Billing/billing';
 import '../../ui/pages/New/new';
 import '../../ui/pages/Single/single';
 import '../../ui/pages/login';
+import '../../ui/pages/resetPassword';
 
 
 FlowRouter.route('/signup', {
@@ -37,7 +38,23 @@ FlowRouter.route('/login', {
   action: function() {
     BlazeLayout.render('login');
   }
-})
+});
+
+FlowRouter.route('/reset-password', {
+  triggersEnter: function (context, params) {
+    $('body').addClass('login');
+    $('html').addClass('login');
+  },
+  triggersExit: function (context, params) {
+    $('body').removeClass('login');
+    $('html').removeClass('login');
+  },
+  name: 'resetPassword',
+  action: function() {
+    BlazeLayout.render('resetPassword');
+  }
+});
+
 
 FlowRouter.route('/dashboard', {
   name: "dashboard",

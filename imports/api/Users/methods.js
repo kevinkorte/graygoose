@@ -60,5 +60,14 @@ Meteor.methods({
     } catch (e) {
       throw new Meteor.Error('remove-user-admin-error', "Error");
     }
+  },
+  sendResetPasswordEmail(email) {
+    console.log(email);
+    try {
+      let user = Accounts.findUserByEmail(email);
+      Accounts.sendResetPasswordEmail(user._id, email);
+    } catch (e) {
+      throw new Meteor.Error('send-reset-password-email', "Error");
+    }
   }
 });

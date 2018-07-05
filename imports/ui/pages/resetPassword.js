@@ -1,10 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session';
 import { Template } from 'meteor/templating';
+import { Accounts } from 'meteor/accounts-base'
 
-import './login.html';
+import './resetPassword.html';
 
-Template.login.onRendered(() => {
+Template.resetPassword.onRendered(() => {
   $(document).ready(function() {
     let movementStrength = 25;
     let height = movementStrength / $(window).height();
@@ -19,7 +20,8 @@ Template.login.onRendered(() => {
     });
 });
 
-Template.login.helpers({
+
+Template.resetPassword.helpers({
   ifError() {
     if (Session.get('error')) {
       return true;
@@ -27,21 +29,30 @@ Template.login.helpers({
       return;
     }
   },
+  ifSuccess() {
+    if (Session.get('success')) {
+      return true;
+    } else {
+      return;
+    }
+  },
   readError() {
     return Session.get('error');
+  },
+  readSuccess() {
+    return Session.get('success');
   }
 });
 
-Template.login.events({
-  'submit .login'(event) {
+Template.resetPassword.events({
+  'submit .resetPassword'(event) {
     event.preventDefault();
     let email = event.target.email.value;
-    let password = event.target.password.value;
-    Meteor.loginWithPassword(email, password, (error) => {
+    Meteor.call('sendResetPasswordEmail', email, (error) => {
       if (error) {
-        Session.set('error', error.reason);
+        console.log(error);
       } else {
-        FlowRouter.go('dashboard');
+        Session.set('success', 'Success! Check your email for a link to reset your password.')
       }
     })
   }
