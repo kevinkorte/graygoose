@@ -47,10 +47,12 @@ Template.resetPassword.helpers({
 Template.resetPassword.events({
   'submit .resetPassword'(event) {
     event.preventDefault();
+    Session.set('error', null);
+    Session.set('success', null);
     let email = event.target.email.value;
     Meteor.call('sendResetPasswordEmail', email, (error) => {
       if (error) {
-        console.log(error);
+        Session.set('error', error.reason);
       } else {
         Session.set('success', 'Success! Check your email for a link to reset your password.')
       }
