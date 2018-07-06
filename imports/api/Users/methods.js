@@ -62,12 +62,14 @@ Meteor.methods({
     }
   },
   sendResetPasswordEmail(email) {
+    check(email, String);
     console.log(email);
     try {
       let user = Accounts.findUserByEmail(email);
       Accounts.sendResetPasswordEmail(user._id, email);
     } catch (e) {
-      throw new Meteor.Error('send-reset-password-email', "Error");
+      console.log(e);
+      throw new Meteor.Error('send-reset-password-email', "There was an error trying to send you a password reset email. Check that your email address is correct.");
     }
   }
 });

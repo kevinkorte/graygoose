@@ -6,6 +6,8 @@ import { Accounts } from 'meteor/accounts-base'
 import './resetPassword.html';
 
 Template.resetPassword.onRendered(() => {
+  Session.set('error', null);
+  Session.set('success', null);
   $(document).ready(function() {
     let movementStrength = 25;
     let height = movementStrength / $(window).height();

@@ -10,6 +10,7 @@ import '../../ui/pages/New/new';
 import '../../ui/pages/Single/single';
 import '../../ui/pages/login';
 import '../../ui/pages/resetPassword';
+import '../../ui/pages/setNewPassword';
 
 
 FlowRouter.route('/signup', {
@@ -123,6 +124,13 @@ FlowRouter.route('/:user/:_id', {
   }
 });
 
+FlowRouter.route('/set-new-password', {
+  name: 'setNewPassword',
+  action: function() {
+    BlazeLayout.render('setNewPassword');
+  }
+});
+
 Accounts.onEmailVerificationLink( function(token, done) {
   Accounts.verifyEmail(token, (error) => {
     if (error) {
@@ -130,6 +138,30 @@ Accounts.onEmailVerificationLink( function(token, done) {
     } else {
       done();
       FlowRouter.go('dashboard');
+    }
+  });
+});
+
+Accounts.onResetPasswordLink( ( token, done ) => {
+  FlowRouter.go('setNewPassword');
+  Template.setNewPassword.events({
+    'submit #js-password-reset-form'(event) {
+      event.preventDefault();
+      const password = event.target.password.value;
+      const confirmPassword = event.target.confirmPassword.value;
+      if ( password != confirmPassword ) {
+        Bert.alert('Passwords do not match', 'danger');
+      } else {
+        Accounts.resetPassword(token, password, (error) => {
+          if ( error ) {
+            Bert.alert(error.reason, 'danger');
+          } else {
+            Bert.alert('Password successfully reset', 'success');
+            FlowRouter.go('dashboard');
+            done();
+          }
+        });
+      }
     }
   });
 });
