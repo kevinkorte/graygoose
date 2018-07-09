@@ -33,9 +33,12 @@ Template.single.helpers({
     return Showings.findOne();
   },
   userName(userId) {
+    console.log({userId});
+    console.log(Meteor.users.findOne(userId));
     let user;
     user = Meteor.users.findOne(userId);
     if (user) {
+      console.log(user);
       return user.profile.name.first;
     }
   },
