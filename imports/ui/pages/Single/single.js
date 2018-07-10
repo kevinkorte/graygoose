@@ -8,8 +8,10 @@ import './single.html';
 
 Template.single.onCreated(function() {
   this.getShowingId = () => FlowRouter.getParam('_id');
+  this.getFounderId = () => FlowRouter.getParam('user');
   this.autorun(() => {
     this.subscribe('singleShowing', this.getShowingId());
+    this.subscribe('founding.user', this.getFounderId());
   })
 })
 
