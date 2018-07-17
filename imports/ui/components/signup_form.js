@@ -1,12 +1,7 @@
-import {
-  Meteor
-} from "meteor/meteor";
-import {
-  Template
-} from "meteor/templating";
-import {
-  Accounts
-} from 'meteor/accounts-base'
+import { Meteor } from "meteor/meteor";
+import { Template } from "meteor/templating";
+import { Accounts } from 'meteor/accounts-base';
+import { Session } from 'meteor/session';
 
 import zxcvbn from 'zxcvbn';
 import validate from 'jquery-validation';
@@ -115,12 +110,10 @@ Template.signup_form.onRendered(() => {
     const firstname = $('#first-name').val();
     const lastname = $('#last-name').val();
     token = $("#stripeToken").val();
-    console.log('before call');
     Meteor.call('checkAndCreateAccount', email, password, (error, userId) => {
       if (error) {
-        console.error(error);
+        Session.set('error', error);
       } else {
-        console.log('accounts');
         Accounts.createUser({
           email: email,
           password: password,
@@ -132,46 +125,44 @@ Template.signup_form.onRendered(() => {
           }
         }, (error) => {
           if (error) {
-            console.log(error);
+            Session.set('error', error);
           } else {
             let userId = Meteor.userId();
-            console.log('start');
                 Meteor.call('createNewOrganization', (error, organizationId) => {
                   if (error) {
-                    console.log(error);
+                    Session.set('error', error);
                   } else {
                     Meteor.call('setOwnerOnOrganization', userId, organizationId, (error) => {
                       if (error) {
-                        console.log(error);
+                        Session.set('error', error);
                       } else {
                         Meteor.call('createStripeCustomer', email, token, (error, customer) => {
                           if (error) {
-                            console.error("error", error);
+                            Session.set('error', error);
                           } else {
                             Meteor.call('saveStripeCustomer', customer, (error, result) => {
                               if (error) {
-                                console.log(error);
+                                Session.set('error', error);
                               } else {
                                 Meteor.call('updateLocalUserAccountWithStripeId', userId, customer, (error) => {
                                   if (error) {
-                                    console.log(error);
+                                    Session.set('error', error);
                                   } else {
                                     Meteor.call('subscribeCustomerToPlan', customer.id, (error, subscription) => {
                                       if (error) {
-                                        console.log(error)
+                                        Session.set('error', error);
                                       } else {
-                                        console.log(result);
                                         Meteor.call('saveSubscription', subscription, (error) => {
                                           if (error) {
-                                            console.log(error);
+                                            Session.set('error', error);
                                           } else {
                                             Meteor.call('updateLocalUserAccountWithStripeSub', userId, subscription, (error) => {
                                               if (error) {
-                                                console.log(error);
+                                                Session.set('error', error);
                                               } else {
                                                 Meteor.call('updateOrganizationWithStrip', organizationId, customer, subscription, (error) => {
                                                   if (error) {
-                                                    console.log(error);
+                                                    Session.set('error', error);
                                                   } else {
                                                     Meteor.call('sendVerificationEmail', userId);
                                                     FlowRouter.go("dashboard");
@@ -232,5 +223,15 @@ Template.signup_form.helpers({
   },
   subs() {
     return Subscriptions.find();
+  },
+  ifError() {
+    if (Session.get('error')) {
+      return true;
+    } else {
+      return;
+    }
+  },
+  readError() {
+    return Session.get('error');
   }
 })

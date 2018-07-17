@@ -26,6 +26,11 @@
       <div class="col-9 d-flex justify-content-center py-5">
         <div class="col-9">
           <h3 class="header-gray">Create an Account</h3>
+          {{#if ifError}}
+            <div class="alert alert-danger" role="alert">
+              {{readError}}
+            </div>
+          {{/if}}
           <form id="signup">
             <div class="form-group mb-5">
               <label for="card-element" class="form-label-gray">Payment</label>

@@ -14,7 +14,7 @@ Meteor.methods({
         card
       });
     } catch (e) {
-      throw new Meteor.Error('save-stripe-card-error', "Error");
+      throw new Meteor.Error('save-stripe-card-error', "We had an error saving your payment method. Please try again.");
     }
   },
   updateSource(token) {

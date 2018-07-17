@@ -14,7 +14,7 @@ Meteor.methods({
         payment
       });
     } catch (e) {
-      throw new Meteor.Error('save-payment-error', "Error");
+      throw new Meteor.Error('save-payment-error', "Well that's unexpected. We encountered an error");
     }
   },
   async retrievePaymentEvent(id) {
@@ -29,7 +29,7 @@ Meteor.methods({
         }
       })
     } catch (e) {
-      throw new Meteor.Error('retrieve-payment-event', "Error");
+      throw new Meteor.Error('retrieve-payment-event', "Well that's unexpected. We encountered an error");
     }
   }
 });

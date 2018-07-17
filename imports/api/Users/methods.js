@@ -42,7 +42,7 @@ Meteor.methods({
     try {
       Meteor.users.remove(id);
     } catch (e) {
-      throw new Meteor.Error('revoke-user-error', "Error");
+      throw new Meteor.Error('revoke-user-error', "Well that's unexpected. We encountered an error");
     }
   },
   makeUserAdmin(user) {
@@ -50,7 +50,7 @@ Meteor.methods({
       Roles.addUsersToRoles(user._id, 'admin', user.organizationId);
       Roles.removeUsersFromRoles(user._id, 'member', user.organizationId);
     } catch (e) {
-      throw new Meteor.Error('make-user-admin-error', "Error");
+      throw new Meteor.Error('make-user-admin-error', "Well that's unexpected. We encountered an error");
     }
   },
   removeUserAdmin(user) {
@@ -58,7 +58,7 @@ Meteor.methods({
       Roles.addUsersToRoles(user._id, 'member', user.organizationId);
       Roles.removeUsersFromRoles(user._id, 'admin', user.organizationId);
     } catch (e) {
-      throw new Meteor.Error('remove-user-admin-error', "Error");
+      throw new Meteor.Error('remove-user-admin-error', "Well that's unexpected. We encountered an error");
     }
   },
   sendResetPasswordEmail(email) {

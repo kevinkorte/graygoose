@@ -40,7 +40,7 @@ Meteor.methods({
         }
       });
     } catch (e) {
-      throw new Meteor.Error('update-user-account-w-stripe-sub', "Well that's unexpected. There was an error setting up your account.");
+      throw new Meteor.Error('update-user-account-w-stripe-sub', "Well that's unexpected. We encountered an error");
     }
   },
   updateSubscriptionQuantity(organizationId) {
