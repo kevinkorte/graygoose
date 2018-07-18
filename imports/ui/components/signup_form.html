@@ -2,7 +2,7 @@
 <div class="top-border-gradient mb-5"></div>
   <div class="container bg-white br-10 signup-container">
     <div class="row">
-      <div class="col-3 signup-sidebar d-flex flex-column">
+      <div class="col-sm-12 col-md-3 signup-sidebar d-flex flex-column">
         <!-- <div class="price-wrapper d-flex justify-content-center">
           <span class="price">$12</span>
           <span class="price-interval d-flex flex-column justify-content-center">
@@ -23,8 +23,8 @@
         </div>
         
       </div>
-      <div class="col-9 d-flex justify-content-center py-5">
-        <div class="col-9">
+      <div class="col-sm-12 col-md-9 d-flex justify-content-center py-5">
+        <div class="col-sm-12 col-md-9">
           <h3 class="header-gray">Create an Account</h3>
           {{#if ifError}}
             <div class="alert alert-danger" role="alert">
@@ -60,11 +60,11 @@
           <label for="password" class="col-sm-3 col-form-label form-label-gray">Password</label>
           <div class="col-sm-9">
             <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-msg="A strong password is required">
-            <div class="d-flex justify-content-between password-helper-wrapper">
-              <small id="password-suggestion" class="form-text text-warning"></small>
+            <div class=" password-helper-wrapper">
               <div class="password-indicator">
                 <div class="strength" id="strength"></div>
               </div>
+              <small id="password-suggestion" class="form-text text-warning"></small>
             </div>
           </div>
         </div>
