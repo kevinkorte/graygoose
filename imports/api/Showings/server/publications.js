@@ -3,8 +3,8 @@ import { check } from 'meteor/check';
 import Showings from '../Showings';
 
 Meteor.publish('allShowings', () => {
-  console.log('all showings');
-  return Showings.find({});
+  let user = Meteor.users.findOne(this.userId);
+  return Showings.find();
 });
 
 Meteor.publish('singleShowing', function(id) {
